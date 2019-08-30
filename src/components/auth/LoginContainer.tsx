@@ -1,11 +1,12 @@
 import React, {BaseSyntheticEvent, MouseEvent, useState} from "react";
+import { connect } from 'react-redux';
 
 // Custom imports
 import LoginComponent from "./LoginComponent";
-import {ILoginComponentProps} from "../../models/AuthModel";
-import {login} from "../../services/AuthQuery";
+import {ILoginComponentProps, ILoginContainerProps} from "../../models/AuthModel";
+import {Login} from "../../actions/AuthAction";
 
-const LoginContainer = () => {
+const LoginContainer = (props: ILoginContainerProps) => {
 
     const [inputs, setInputs] = useState({username: '', password: ''});
 
@@ -17,9 +18,7 @@ const LoginContainer = () => {
     const onSubmit = (e: MouseEvent<HTMLElement>) => {  // Handle form submit
         e.preventDefault();
 
-        console.log('submitted')
-
-        login(inputs)
+        props.Login(inputs) // Login action
     };
 
     const loginComponentProps: ILoginComponentProps = {  // assign props to Login component
@@ -28,8 +27,11 @@ const LoginContainer = () => {
         onSubmit: onSubmit,
     };
 
-console.log(inputs)
     return <LoginComponent {...loginComponentProps}/>
 }
 
-export default LoginContainer;
+const mapDispatchToProps = {  // add dispatch actions to props
+    Login
+}
+
+export default  connect(null, mapDispatchToProps)(LoginContainer);
