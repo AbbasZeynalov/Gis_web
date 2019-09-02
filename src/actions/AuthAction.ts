@@ -5,6 +5,7 @@ import {ILoginForm} from "../models/AuthModel";
 import {IResponse} from "../models/HttpModel";
 
 export const Login = (loginForm: ILoginForm) => {
+
     return (dispatch: Dispatch) => {
         console.log('action')
         LoginService(loginForm).then((res: IResponse) => {
