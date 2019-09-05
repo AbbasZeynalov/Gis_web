@@ -1,0 +1,12 @@
+
+/* Admin Menu */
+.menu-active>div,
+.menu-active>div:hover {
+    background-color: #607d8b;
+}
+
+.menu-active svg,
+.menu-active >div>div>span {
+    color: white;
+}
+

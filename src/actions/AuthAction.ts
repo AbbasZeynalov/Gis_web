@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {LoginAction, LogoutAction} from "../config/constants/actions";
+import {LOGIN_ACTION, LOGOUT_ACTION} from "../config/constants/actions";
 import {LoginService} from "../services/AuthService";
 import {ILoginForm} from "../models/AuthModel";
 import {IResponse} from "../models/HttpModel";
@@ -10,7 +10,7 @@ export const Login = (loginForm: ILoginForm) => {
         LoginService(loginForm).then((res: IResponse) => {
             if (!res.errors) {
                 dispatch({
-                    type: LoginAction,
+                    type: LOGIN_ACTION,
                     payload: res.data.login
                 })
             }
@@ -21,7 +21,7 @@ export const Login = (loginForm: ILoginForm) => {
 export const Logout = () => {
     return (dispatch: Dispatch) => {
         dispatch({
-            type: LogoutAction
+            type: LOGOUT_ACTION
         })
     }
 }
