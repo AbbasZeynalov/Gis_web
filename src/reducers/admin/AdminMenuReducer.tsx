@@ -6,7 +6,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 //custom imports
 import {ADMIN_PLUGINS, ADMIN_USERS} from "../../config/constants/routes";
-import {IAdminMenuAction, IAdminMenuState} from "../../models/redux/AdminMenuModel";
+import {IAdminMenuAction, IAdminMenuState} from "../../models/redux/AdminMenuReduxModel";
 
 const initState: IAdminMenuState = {
     menuItems: [

@@ -9,9 +9,10 @@ import {
 // Custom imports
 import {Logout} from "./actions/AuthAction";
 import store from "./store";
-import {LOGIN} from "./config/constants/routes";
+import {ADMIN_PLUGINS, HOME, LOGIN} from "./config/constants/routes";
 import LoginContainer from "./components/auth/LoginContainer";
 import SnackbarComponent from "./components/common/SnackbarComponent";
+const AdminPluginsContainer = lazy(() => import("./components/admin/plugins/AdminPluginsContainer"))
 
 // @ts-ignore
 export const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -23,10 +24,10 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
         setTimeout(() => store.dispatch(Logout()), 0)
     }
 
-    let user = sessionStorage.getItem('token');
-    let auth = !!user;
+    let token = sessionStorage.getItem('token');
+    let auth = !!token;
 
-    console.log('route ', auth)
+    console.log('route ', auth, '  ', token);
 
     if(rest.path === '/login') {
 
@@ -55,12 +56,22 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     }
 };
 
+export const AdminRoutes = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+                <PrivateRoute exact path={ADMIN_PLUGINS} component={AdminPluginsContainer} />
+            </Switch>
+        </Suspense>
+    )
+};
+
 const Routes = () => {
 
     return (
-            <Suspense fallback={<div>Yüklənir...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
-
+                    <PrivateRoute exact path={HOME} component={() => <div>home page</div>} />
                 </Switch>
             </Suspense>
         );

@@ -8,6 +8,8 @@ import {
     IAdminDrawerContainerProps,
     IAdminLayoutComponentProps
 } from "../../../models/admin/AdminLayoutModel";
+import {AdminRoutes} from "../../../Routes";
+import ErrorBoundary from "../../common/ErrorBoudary";
 
 const AdminLayoutComponent = React.memo((props: IAdminLayoutComponentProps) => {
     const classes = useAdminLayoutStyles();  // Admin Layout styles
@@ -33,7 +35,11 @@ const AdminLayoutComponent = React.memo((props: IAdminLayoutComponentProps) => {
 
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <h1>content</h1>
+                {/* Wrap our content with error boundary */}
+                <ErrorBoundary>
+                    {/* app admin routes */}
+                    <AdminRoutes />
+                </ErrorBoundary>
             </main>
         </div>
     )

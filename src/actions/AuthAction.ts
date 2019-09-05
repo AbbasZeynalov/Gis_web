@@ -6,18 +6,24 @@ import {IResponse} from "../models/HttpModel";
 
 export const Login = (loginForm: ILoginForm) => {
 
-    return (dispatch: Dispatch) => {
-        console.log('action')
-        LoginService(loginForm).then((res: IResponse) => {
+    return (dispatch: Dispatch): Promise<any> => {
+        return LoginService(loginForm).then((res: IResponse) => {
             if (!res.errors) {
+                let user = res.data.data.login;
+
+                sessionStorage.setItem('token', JSON.stringify(user.access_token));
+                sessionStorage.setItem('delayToken', new Date(new Date().getTime() + 9*60*60*1000).toISOString()); // set auth delay
+
                 dispatch({
                     type: LOGIN_ACTION,
-                    payload: res.data.login
-                })
+                    payload: user
+                });
+
+                return true;
             }
         })
     }
-}
+};
 
 export const Logout = () => {
     return (dispatch: Dispatch) => {
@@ -25,4 +31,4 @@ export const Logout = () => {
             type: LOGOUT_ACTION
         })
     }
-}
+};

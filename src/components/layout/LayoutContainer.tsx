@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React  from 'react';
+import ErrorBoundary from "../common/ErrorBoudary";
+import Routes from "../../Routes";
 
-class LayoutContainer extends Component {
+const LayoutContainer = React.memo(() => {
 
-
-    render(): React.ReactNode {
-
-        return (
-            <h1>hello world</h1>
-        );
-    }
-}
+    return (
+        <ErrorBoundary>
+            <Routes />
+        </ErrorBoundary>
+    );
+});
 
 export default LayoutContainer;

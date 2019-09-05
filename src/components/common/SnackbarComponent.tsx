@@ -24,6 +24,6 @@ const mapStateToProps = (state: any) => {
     return {
         SnackBarFunction: state.SnackBar.SnackBarFunction
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(SnackbarComponent))

@@ -32,7 +32,7 @@ class App extends Component<AppProps,{}> {
                 :
                     this.props.location.pathname.includes(ADMIN)
                     ?
-                        <AdminLayoutContainer />
+                        <PrivateRoute path={ADMIN} component={AdminLayoutContainer} />
                     :
                         <LayoutContainer />
             }
