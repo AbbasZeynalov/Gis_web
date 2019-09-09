@@ -27,9 +27,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     let token = sessionStorage.getItem('token');
     let auth = !!token;
 
-    console.log('route ', auth, '  ', token);
-
-    if(rest.path === '/login') {
+    if(rest.path === LOGIN) {
 
         return (
             <Route {...rest} render={() => (
@@ -76,6 +74,6 @@ const Routes = () => {
             </Suspense>
         );
 
-}
+};
 
 export default Routes;

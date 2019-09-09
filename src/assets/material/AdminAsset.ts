@@ -1,4 +1,4 @@
-import {makeStyles} from "@material-ui/core";
+import {makeStyles, Theme} from "@material-ui/core";
 import {TextDark} from "../../config/constants/Assets";
 
 const drawerWidth = 240;
@@ -81,5 +81,12 @@ export const useAdminDrawerStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9) + 1,
         },
+    },
+}));
+
+export const useAdminTabsStyles = makeStyles((theme: Theme) => ({
+    root: {
+        backgroundColor: theme.palette.background.paper,
+        width: '100%',
     },
 }));
