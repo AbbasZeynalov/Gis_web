@@ -28,7 +28,7 @@ export const LoginService = async (loginForm: ILoginForm): Promise<AxiosResponse
 
 const checkShowSnackBar = (response: IResponse, message: string) => {
     if (response.status === 200) {
-        let variant = 'success'
+        let variant = 'success';
         store.getState().SnackBar.SnackBarFunction(message, {variant})
     }
 };

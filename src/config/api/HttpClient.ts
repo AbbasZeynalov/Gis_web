@@ -24,7 +24,7 @@ HttpClient.interceptors.request.use(
 
         return Promise.reject(error);
     }
-)
+);
 
 HttpClient.interceptors.response.use(
     (response: any) => {
@@ -40,6 +40,6 @@ HttpClient.interceptors.response.use(
 
         return Promise.reject(error);
     }
-)
+);
 
 export default HttpClient;
