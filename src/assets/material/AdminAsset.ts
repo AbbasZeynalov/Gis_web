@@ -1,4 +1,4 @@
-import {makeStyles, Theme} from "@material-ui/core";
+import {createStyles, makeStyles, Theme} from "@material-ui/core";
 import {TextDark} from "../../config/constants/Assets";
 
 const drawerWidth = 240;
@@ -90,3 +90,45 @@ export const useAdminTabsStyles = makeStyles((theme: Theme) => ({
         width: '100%',
     },
 }));
+
+
+// Plugins
+export const usePluginDetailsAsset = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            flexGrow: 1,
+        },
+        selectInput: {
+            width: '100%'
+        },
+        mainText: {
+            fontWeight: 'bold'
+        },
+        mainTextSpan: {
+            fontWeight: 'normal'
+        }
+    }),
+);
+
+export const usePluginDetailButtonsStyle = makeStyles((theme: Theme) =>
+    createStyles({
+        button: {
+            marginRight: theme.spacing(1)
+        },
+    }),
+);
+
+export const useUninstallModalStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        modalTitle: {
+            textAlign: 'center',
+            padding: '15px 0px 30px 0px'
+        },
+        modalButtons: {
+            marginRight: 10
+        },
+        modalButtonsWrapper: {
+            marginBottom: 15
+        }
+    }),
+);

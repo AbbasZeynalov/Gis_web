@@ -4,11 +4,12 @@ import React from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from '@material-ui/core/TableBody';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 
 // Custom imports
 import AppTableContainer, {MyContext} from "../../../../common/tables/AppTableContainer";
+import TabUpdateHeader from "./TabUpdateHeader";
+import PluginDetailsContainer from "../../plugin-details/PluginDetailsContainer";
+import {ITabUpdateComponentProps} from "../../../../../models/admin/AdminPluginsModel";
 
 function createData(name: string, calories: number, fat: number) {
     return { name, calories, fat };
@@ -30,21 +31,17 @@ const rows = [
     createData('Oreo', 437, 18.0),
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
-
-const TabUpdateComponent = React.memo(() => {
+const TabUpdateComponent = React.memo((props: ITabUpdateComponentProps) => {
+    const {InstallPlugins} = props;
 
     return (
        <>
-           <Grid container spacing={2}>
-               <Grid item xs={10}>
-                   <span>The following updates are available</span>
-               </Grid>
-               <Grid item xs={2}>
-                   <Button size="medium" variant="outlined" color='primary' style={{float: 'right'}}>
-                       Isntall all
-                   </Button>
-               </Grid>
-           </Grid>
+           {/* Tab Header */}
+           <TabUpdateHeader
+               InstallPlugins={InstallPlugins}
+           />
+
+           {/* Tab Table */}
            <AppTableContainer dataCount={rows.length}>
                <MyContext.Consumer>
                    {(pageDetail) => {
@@ -56,16 +53,13 @@ const TabUpdateComponent = React.memo(() => {
                                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: any, index: number) => (
                                    <TableRow key={index}>
                                        <TableCell component="th" scope="row">
-                                           {row.name}
+                                           <PluginDetailsContainer actionButtons={['install', 'details']} />
                                        </TableCell>
-                                       <TableCell align="right">{row.calories}</TableCell>
-                                       <TableCell align="right">{row.fat}</TableCell>
                                    </TableRow>
                                ))}
                            </TableBody>
                        )
-                   }
-                   }
+                   }}
                </MyContext.Consumer>
            </AppTableContainer>
        </>
@@ -73,3 +67,11 @@ const TabUpdateComponent = React.memo(() => {
 });
 
 export default TabUpdateComponent;
+
+{/*<TableRow key={index}>*/}
+{/*    <TableCell component="th" scope="row">*/}
+{/*        {row.name}*/}
+{/*    </TableCell>*/}
+{/*    <TableCell align="right">{row.calories}</TableCell>*/}
+{/*    <TableCell align="right">{row.fat}</TableCell>*/}
+{/*</TableRow>*/}
