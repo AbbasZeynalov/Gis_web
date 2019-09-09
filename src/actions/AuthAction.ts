@@ -1,28 +1,34 @@
 import {Dispatch} from "redux";
-import {LoginAction, LogoutAction} from "../config/constants/actions";
+import {LOGIN_ACTION, LOGOUT_ACTION} from "../config/constants/actions";
 import {LoginService} from "../services/AuthService";
 import {ILoginForm} from "../models/AuthModel";
 import {IResponse} from "../models/HttpModel";
 
 export const Login = (loginForm: ILoginForm) => {
 
-    return (dispatch: Dispatch) => {
-        console.log('action')
-        LoginService(loginForm).then((res: IResponse) => {
+    return (dispatch: Dispatch): Promise<any> => {
+        return LoginService(loginForm).then((res: IResponse) => {
             if (!res.errors) {
+                let user = res.data.data.login;
+
+                sessionStorage.setItem('token', JSON.stringify(user.access_token));
+                sessionStorage.setItem('delayToken', new Date(new Date().getTime() + 9*60*60*1000).toISOString()); // set auth delay
+
                 dispatch({
-                    type: LoginAction,
-                    payload: res.data.login
-                })
+                    type: LOGIN_ACTION,
+                    payload: user
+                });
+
+                return true;
             }
         })
     }
-}
+};
 
 export const Logout = () => {
     return (dispatch: Dispatch) => {
         dispatch({
-            type: LogoutAction
+            type: LOGOUT_ACTION
         })
     }
-}
+};

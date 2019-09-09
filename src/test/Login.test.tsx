@@ -3,7 +3,6 @@ import React from "react";
 import {act} from "react-dom/test-utils";
 import LoginContainer from "../components/auth/LoginContainer";
 
-
 let container: any = null;
 beforeEach(() => {
     // setup a DOM element as a render target

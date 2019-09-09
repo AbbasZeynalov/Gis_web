@@ -5,7 +5,7 @@ export interface IUser {
     patronymic: string
     email: string
     access_token?: string
-    userPermissions: IUserPermissions
+    userPermissions: IUserPermissions[]
 }
 
 export interface IUserPermissions {

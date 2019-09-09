@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router';
 
-// Material imports
-
-
 //custom Components
 import './App.css';
 import LayoutContainer from './components/layout/LayoutContainer';
 import {PrivateRoute} from "./Routes";
-import {LOGIN} from "./config/constants/routes";
+import {ADMIN, LOGIN} from "./config/constants/routes";
 import LoginContainer from "./components/auth/LoginContainer";
 import SnackbarComponent from "./components/common/SnackbarComponent";
+import AdminLayoutContainer from "./components/admin/layout/AdminLayoutContainer";
 
 interface AppProps {
     location: any
@@ -32,7 +30,11 @@ class App extends Component<AppProps,{}> {
                         <PrivateRoute path={LOGIN} component={LoginContainer} />
                     </>
                 :
-                    <LayoutContainer />
+                    this.props.location.pathname.includes(ADMIN)
+                    ?
+                        <PrivateRoute path={ADMIN} component={AdminLayoutContainer} />
+                    :
+                        <LayoutContainer />
             }
         </>
     );

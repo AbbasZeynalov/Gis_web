@@ -9,11 +9,12 @@ import { MuiThemeProvider, createMuiTheme  } from '@material-ui/core/styles';
 import App from "./App";
 import "./assets/css/style.css";
 import store from './store';
+import {MainColor} from "./config/constants/Assets";
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#000',
+            main: MainColor,
         },
     },
 });
