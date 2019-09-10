@@ -10,9 +10,9 @@ import {Typography} from "@material-ui/core";
 import {IPluginDetailsComponentProps} from "../../../../models/admin/AdminPluginsModel";
 import {usePluginDetailsAsset} from "../../../../assets/material/AdminAsset";
 import PluginDetailButtons from "./PluginDetailButtons";
-import PluginUninstallModal from "../modals/PluginUninstallModal";
-import PluginConfigureModal from "../modals/PluginConfigureModal";
-import PluginDetailModal from "../modals/PluginDetailModal";
+import PluginUninstallModal from "../modals/uninstall-modal/PluginUninstallModal";
+import PluginConfigureModal from "../modals/configure-modal/PluginConfigureModal";
+import PluginDetailModal from "../modals/detail-modal/PluginDetailModal";
 
 const PluginDetailsComponent = React.memo((props: IPluginDetailsComponentProps) => {
     const classes = usePluginDetailsAsset();

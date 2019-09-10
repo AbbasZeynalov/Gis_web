@@ -91,12 +91,12 @@ export const useAdminTabsStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-
 // Plugins
 export const usePluginDetailsAsset = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
+            padding: '15px 0px'
         },
         selectInput: {
             width: '100%'
@@ -132,3 +132,46 @@ export const useUninstallModalStyles = makeStyles((theme: Theme) =>
         }
     }),
 );
+
+export const useConfigureModalStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        modalTitle: {
+            textAlign: 'center',
+            padding: '5px 0px 15px 0px'
+        },
+        modalIcon: {
+            cursor: 'pointer',
+            float: 'right'
+        },
+        modalButtons: {
+            marginRight: 10
+        },
+        modalButtonsWrapper: {
+            textAlign: 'right'
+        }
+    }),
+);
+
+export const useDetailModalStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        mainText: {
+            fontWeight: 'bold'
+        },
+        mainTextSpan: {
+            fontWeight: 'normal'
+        },
+        releaseButtonWrapper: {
+            textAlign: 'right',
+            marginTop: 6
+        }
+    }),
+);
+
+export const useDetailModalTabStyles = makeStyles((theme: Theme) => ({
+    root: {
+        backgroundColor: theme.palette.background.paper,
+        overflowY: 'auto',
+        height: 300,
+        width: '100%',
+    },
+}));

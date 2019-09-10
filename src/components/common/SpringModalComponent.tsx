@@ -21,13 +21,14 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ISpringModalProps {
     openModal: boolean
+    width?: string | number
     children: any
     handleModal: (openModal: boolean) => void
 }
 
 export default function SpringModal(props: ISpringModalProps) {
     const classes = useStyles();
-    const {children, openModal, handleModal} = props;
+    const {children, openModal, handleModal, width} = props;
 
     return (
         <div>
@@ -44,7 +45,7 @@ export default function SpringModal(props: ISpringModalProps) {
                 }}
             >
                 <FadeComponent in={openModal}>
-                    <div className={classes.paper}>
+                    <div className={classes.paper} style={{width: width}}>
                         {children}
                     </div>
                 </FadeComponent>

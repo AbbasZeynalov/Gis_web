@@ -28,6 +28,7 @@ export interface IPluginDetailButtonsProps {
     ActivatePlugin: () => void
 }
 
+// Plugin Modals
 export interface IPluginUninstallModalProps {
     openUninstallModal: boolean
     handleUninstallModal: (openUninstallModal: boolean) => void
@@ -45,6 +46,13 @@ export interface IPluginDetailModalProps {
 
 export interface IPluginDetailsContainerProps {
     actionButtons: Array<'install' | 'uninstall' | 'details' | 'configure' | 'activate'>
+}
+
+export interface IDetailTabComponentProps {
+    value: number
+    a11yProps: (index: number) => any
+    handleChange: (event: React.ChangeEvent<{}>, newValue: number) => void
+    handleChangeIndex: (index: number) => void
 }
 
 // Tab Update

@@ -1,9 +1,9 @@
 import React from "react";
-import SpringModal from "../../../common/SpringModalComponent";
+import SpringModal from "../../../../common/SpringModalComponent";
 import {Typography} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import {useUninstallModalStyles} from "../../../../assets/material/AdminAsset";
-import {IPluginUninstallModalProps} from "../../../../models/admin/AdminPluginsModel";
+import {useUninstallModalStyles} from "../../../../../assets/material/AdminAsset";
+import {IPluginUninstallModalProps} from "../../../../../models/admin/AdminPluginsModel";
 
 const PluginUninstallModal = React.memo((props: IPluginUninstallModalProps) => {
     const classes = useUninstallModalStyles();
@@ -40,7 +40,7 @@ const PluginUninstallModal = React.memo((props: IPluginUninstallModalProps) => {
                     size="medium"
                     variant="outlined"
                     color='primary'
-                    // onClick={InstallPlugins}
+                    onClick={() => handleUninstallModal(false)}
                 >
                     Cancel
                 </Button>
