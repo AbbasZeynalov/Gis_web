@@ -13,6 +13,7 @@ import TabPanelComponent from "../../../../../common/tabpanel/TabPanelComponent"
 import TabUpdateContainer from "../../.././tabs/update/TabUpdateContainer";
 import TabInstalledContainer from "../../.././tabs/installed/TabInstalledContainer";
 import TabSearchContainer from "../../../tabs/search/TabSearchContainer";
+import DetailTabContentContainer from "./tab-content/DetailTabContentContainer";
 
 const DetailTabComponent = React.memo((props: IDetailTabComponentProps) => {
     const classes = useDetailModalTabStyles();
@@ -37,15 +38,33 @@ const DetailTabComponent = React.memo((props: IDetailTabComponentProps) => {
                 index={value}
                 onChangeIndex={handleChangeIndex}
             >
-                <TabPanelComponent value={value} index={0} dir={theme.direction}>
-                    <h1>Ui element </h1>
-                </TabPanelComponent>
-                <TabPanelComponent value={value} index={1} dir={theme.direction}>
-                    <h1>Logic</h1>
-                </TabPanelComponent>
-                <TabPanelComponent value={value} index={2} dir={theme.direction}>
-                    <h1>Other services</h1>
-                </TabPanelComponent>
+                {
+                    value === 0
+                    ?
+                        <TabPanelComponent value={value} index={0} dir={theme.direction}>
+                            <DetailTabContentContainer tab='ui' />
+                        </TabPanelComponent>
+                    :
+                        <></>
+                }
+                {
+                    value === 1
+                    ?
+                        <TabPanelComponent value={value} index={1} dir={theme.direction}>
+                            <DetailTabContentContainer tab='logic' />
+                        </TabPanelComponent>
+                    :
+                        <></>
+                }
+                {
+                    value === 2
+                    ?
+                        <TabPanelComponent value={value} index={2} dir={theme.direction}>
+                            <DetailTabContentContainer tab='services' />
+                        </TabPanelComponent>
+                    :
+                        <></>
+                }
             </SwipeableViews>
         </div>
     )

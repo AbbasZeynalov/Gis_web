@@ -175,3 +175,17 @@ export const useDetailModalTabStyles = makeStyles((theme: Theme) => ({
         width: '100%',
     },
 }));
+
+export const useDetailModalTabContentStyles = makeStyles((theme: Theme) => ({
+    contentWrapper: {
+      border: '1px solid #d0d0d0',
+      marginBottom: 5,
+      padding: 10
+    },
+    mainText: {
+        fontWeight: 'bold'
+    },
+    mainTextSpan: {
+        fontWeight: 'normal'
+    }
+}));

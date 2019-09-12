@@ -38,16 +38,33 @@ const AdminPluginsComponent = React.memo((props: IAdminPluginsComponentProps) =>
                 index={value}
                 onChangeIndex={handleChangeIndex}
             >
-                <TabPanelComponent value={value} index={0} dir={theme.direction}>
-                    <TabUpdateContainer />
-                    {/*<AppTable />*/}
-                </TabPanelComponent>
-                <TabPanelComponent value={value} index={1} dir={theme.direction}>
-                    <TabInstalledContainer />
-                </TabPanelComponent>
-                <TabPanelComponent value={value} index={2} dir={theme.direction}>
-                    <TabSearchContainer />
-                </TabPanelComponent>
+                {
+                    value === 0
+                    ?
+                        <TabPanelComponent value={value} index={0} dir={theme.direction}>
+                            <TabUpdateContainer />
+                        </TabPanelComponent>
+                    :
+                        <></>
+                }
+                {
+                    value === 1
+                    ?
+                        <TabPanelComponent value={value} index={1} dir={theme.direction}>
+                            <TabInstalledContainer />
+                        </TabPanelComponent>
+                    :
+                        <></>
+                }
+                {
+                    value === 2
+                    ?
+                        <TabPanelComponent value={value} index={2} dir={theme.direction}>
+                            <TabSearchContainer />
+                        </TabPanelComponent>
+                    :
+                        <></>
+                }
             </SwipeableViews>
         </div>
     )
