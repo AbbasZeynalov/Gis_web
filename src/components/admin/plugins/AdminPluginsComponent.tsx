@@ -13,7 +13,6 @@ import TabPanelComponent from "../../common/tabpanel/TabPanelComponent";
 import TabUpdateContainer from "./tabs/update/TabUpdateContainer";
 import TabInstalledContainer from "./tabs/installed/TabInstalledContainer";
 import TabSearchContainer from "./tabs/search/TabSearchContainer";
-import AppTableContainer from "../../common/tables/AppTableContainer";
 
 const AdminPluginsComponent = React.memo((props: IAdminPluginsComponentProps) => {
     const classes = useAdminTabsStyles();

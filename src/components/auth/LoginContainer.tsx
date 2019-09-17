@@ -8,7 +8,6 @@ import {ILoginComponentProps, ILoginContainerProps} from "../../models/AuthModel
 import {Login} from "../../actions/AuthAction";
 import {IMainReduxState} from "../../models/redux/ReduxModel";
 import {withRouter} from "react-router";
-import {HOME} from "../../config/constants/routes";
 
 const LoginContainer = React.memo((props: ILoginContainerProps) => {
 
