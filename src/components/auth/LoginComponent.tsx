@@ -42,6 +42,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                         name="username"
                         autoComplete="email"
                         autoFocus
+                        inputProps={{ "data-testid": "username" }}
                         value={username}
                         onChange={React.useCallback(  // shallow compare state change
                             (e: BaseSyntheticEvent) => onChange(e),
@@ -58,6 +59,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                         id="password"
                         autoComplete="current-password"
                         value={password}
+                        inputProps={{ "data-testid": "password" }}
                         onChange={React.useCallback(  // shallow compare state change
                             (e: BaseSyntheticEvent) => onChange(e),
                             [password]
@@ -72,9 +74,10 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        data-testid={'submit'}
                         onClick={(e: MouseEvent<HTMLElement>) => onSubmit(e)}
                     >
-                        Sign In
+                        Sign Inn
                     </Button>
                     <Grid container>
                         <Grid item xs>

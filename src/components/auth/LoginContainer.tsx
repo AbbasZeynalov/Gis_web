@@ -39,7 +39,7 @@ const LoginContainer = React.memo((props: ILoginContainerProps) => {
     return <LoginComponent {...loginComponentProps}/>
 });
 
-const mapDispatchToProps = {  // add dispatch actions to props
+const mapDispatchToProps = {
     Login
 };
 
