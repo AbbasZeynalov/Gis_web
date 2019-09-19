@@ -1,7 +1,7 @@
 import React from "react";
-import Enzyme, {mount, shallow} from 'enzyme';
-import LoginComponent from "../components/auth/LoginComponent";
-import {ILoginComponentProps} from "../models/AuthModel";
+import Enzyme, { shallow} from 'enzyme';
+import LoginComponent from "../../components/auth/LoginComponent";
+import {ILoginComponentProps} from "../../models/AuthModel";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,8 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Adapter from 'enzyme-adapter-react-16';
 
-import LoginContainer from "../components/auth/LoginContainer";
-import main, {checkShowSnackBar} from "../services/AuthService";
+import LoginContainer from "../../components/auth/LoginContainer";
+import main from "../../services/AuthService";
 
 import {Provider} from 'react-redux';
 
@@ -22,11 +22,10 @@ import {Router} from 'react-router-dom'
 import {createMemoryHistory} from 'history'
 import {applyMiddleware, createStore} from "redux";
 
-import {fireEvent, render, wait, waitForElement} from '@testing-library/react'
+import {fireEvent, render, wait} from '@testing-library/react'
 import thunk from "redux-thunk";
-import AuthReducer, {initState} from "../reducers/AuthReducer";
-import {IResponse} from "../models/HttpModel";
-import HttpClient from "../config/api/HttpClient";
+import AuthReducer, {initState} from "../../reducers/AuthReducer";
+import HttpClient from "../../config/api/HttpClient";
 
 
 const store = createStore(AuthReducer, initState, applyMiddleware(thunk));
@@ -45,8 +44,6 @@ describe('<LoginComponent />', () => {
             onChange: jest.fn(),
             onSubmit: jest.fn()
         };
-
-        // store.dispatch = jest.fn();
 
         const history = createMemoryHistory()
 
@@ -75,8 +72,7 @@ describe('<LoginComponent />', () => {
         expect(wrapper.find(Link)).toHaveLength(1);
     });
 
-
-    it.only('Login success', async () => {
+    it('Login success', async () => {
 
         let fakeData = {
             status: 200,
@@ -99,9 +95,7 @@ describe('<LoginComponent />', () => {
             Promise.resolve(fakeData)
         );
 
-
         const {getByTestId, getByText} = wrapperContainer;
-
 
         const eventName = {target: {name: "username", value: "cavid"}};
         const eventPassword = {target: {name: "password", value: "123123"}};
@@ -125,7 +119,6 @@ describe('<LoginComponent />', () => {
 
             expect(spySnack).toHaveBeenCalledWith(200, 'Sistemə daxil oldunuz');
         });
-
 
     }, 30000);
 });
