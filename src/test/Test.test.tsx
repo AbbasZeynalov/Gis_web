@@ -91,7 +91,7 @@ describe.only('<LoginComponent />', () => {
 
             const mockEvent = {preventDefault: jest.fn()}
 
-            wrapperContainer.instance().onSubmit(mockEvent);
+            // wrapperContainer.instance().onSubmit(mockEvent);
 
             // expect(eventUserName.persist).toHaveBeenCalled();
         });
