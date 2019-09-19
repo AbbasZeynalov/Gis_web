@@ -25,7 +25,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={classes.paper} data-test='loginBox'>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
@@ -33,7 +33,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate data-test='loginForm'>
                     <TextField
                         variant="outlined"
                         margin="normal"

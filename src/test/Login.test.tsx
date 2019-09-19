@@ -189,14 +189,14 @@ describe('<LoginComponent />', () => {
 
         // await wrapperContainer.find(Button).simulate('click');
 
-// console.log('qqqqqqqqqqqqqqqqqqqqq');
+
 
         // console.log('sss: ', store.getActions());
 
         // return eventually(() => {
             expect(store.dispatch).toHaveBeenCalledTimes(1);
 
-        // console.log('zzzz: ',store.getState());
+        console.log(store.getState());
 
         // console.log('dispatceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeh ', store.getActions())
 
