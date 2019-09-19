@@ -5,12 +5,9 @@ import {ILoginForm} from "../models/AuthModel";
 import {IResponse} from "../models/HttpModel";
 
 export const Login = (loginForm: ILoginForm) => {
-    console.log('llllll: ',loginForm);
 
     return (dispatch: Dispatch): Promise<any> => {
-        console.log('qqqqqqqqqqqqqqqqqqqqq');
         return LoginService(loginForm).then((res: IResponse) => {
-            console.log('xxxxxxxxxxxxxxxxxxxxxxx');
             if (!res.errors) {
                 let user = res.data.data.login;
 

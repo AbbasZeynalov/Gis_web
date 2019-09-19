@@ -140,10 +140,6 @@
       "web.jsx",
       "jsx",
       "node"
-    ],
-    "watchPlugins": [
-      "C:\\custom project\\web\\node_modules\\jest-watch-typeahead\\filename.js",
-      "C:\\custom project\\web\\node_modules\\jest-watch-typeahead\\testname.js"
     ]
   },
   "babel": {
@@ -152,6 +148,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",

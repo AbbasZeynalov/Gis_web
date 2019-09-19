@@ -3,7 +3,7 @@ import {IAuthReduxState} from "../models/redux/AuthReduxModel";
 import {IMainReduxAction} from "../models/redux/ReduxModel";
 import {IUser} from "../models/UserModel";
 
-const initState: IAuthReduxState = {
+export const initState: IAuthReduxState = {
     user: {
         username: '',
         firstname: '',

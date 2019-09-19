@@ -6,7 +6,6 @@ import store from "../store";
 import {IResponse} from "../models/HttpModel";
 
 export const LoginService = async (loginForm: ILoginForm): Promise<AxiosResponse<IResponse>> =>  {
-    console.log('xxxxxxxxxxxxxxxxxxxxxxx');
     let query = ` mutation {
               login ( username: "${loginForm.username}", password: "${loginForm.password}" ) {
                   id,
@@ -21,16 +20,22 @@ export const LoginService = async (loginForm: ILoginForm): Promise<AxiosResponse
 
     const response = await HttpClient.post<IResponse>(ApiConfig.instance.api, {query});
 
-    console.log('zzzzzzzzzzzzzzzzzzz');
-
-    checkShowSnackBar(response, 'Sistemə daxil oldunuz');  // show success Snackbar
+    main.checkShowSnackBar(response.status, 'Sistemə daxil oldunuz');  // show success Snackbar
 
     return response;
 };
 
-export const checkShowSnackBar = (response: IResponse, message: string) => {
-    if (response.status === 200) {
+export const checkShowSnackBar = (status: number, message: string) => {
+    if (status === 200) {
         let variant = 'success';
+        // alert('zzz');
         store.getState().SnackBar.SnackBarFunction(message, {variant})
     }
 };
+
+const main = {
+    LoginService,
+    checkShowSnackBar,
+};
+
+export default main;

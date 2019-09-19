@@ -16,6 +16,7 @@ import Container from '@material-ui/core/Container';
 // Custom imports
 import {AuthAsset} from "../../assets/material/AuthAsset";
 import {ILoginComponentProps} from "../../models/AuthModel";
+import SnackbarComponent from "../common/SnackbarComponent";
 
 const LoginComponent = React.memo((props: ILoginComponentProps) => {
     const classes = AuthAsset();  // assign auth styles to classes
@@ -24,6 +25,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
 
     return (
         <Container component="main" maxWidth="xs">
+            {/*<SnackbarComponent />*/}
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
