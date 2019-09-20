@@ -12,6 +12,7 @@ import {withRouter} from "react-router";
 const LoginContainer = React.memo((props: ILoginContainerProps) => {
 
     const [inputs, setInputs] = useState({username: '', password: ''});
+    const [errors, setError] = useState({username: '', password: ''})
     let token = props.Auth && props.Auth.access_token;
 
     // useEffect(() => {
@@ -25,13 +26,29 @@ const LoginContainer = React.memo((props: ILoginContainerProps) => {
     };
 
     const onSubmit = (e: MouseEvent<HTMLElement>) => {  // Handle form submit
+
         e.preventDefault();
 
-        props.Login(inputs) // Login action
+        if(inputs.username.length < 5) {
+
+            setError({
+                ...errors,
+                username: 'Minimal length is 5'
+            })
+        }
+        else {
+            setError({
+                username: '',
+                password: ''
+            })
+
+            props.Login(inputs) // Login action
+        }
     };
 
     const loginComponentProps: ILoginComponentProps = {  // assign props to Login component
         ...inputs,
+        errors,
         onChange: onChange,
         onSubmit: onSubmit,
     };

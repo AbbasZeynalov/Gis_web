@@ -21,7 +21,7 @@ import SnackbarComponent from "../common/SnackbarComponent";
 const LoginComponent = React.memo((props: ILoginComponentProps) => {
     const classes = AuthAsset();  // assign auth styles to classes
 
-    const {username, password, onChange, onSubmit} = props;
+    const {username, password, onChange, onSubmit, errors} = props;
 
     return (
         <Container component="main" maxWidth="xs">
@@ -51,6 +51,8 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                             [username]
                         )}
                     />
+                    <div>{errors.username}</div>
+                    {/*<div>Minimal length is 5</div>*/}
                     <TextField
                         variant="outlined"
                         margin="normal"

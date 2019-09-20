@@ -13,7 +13,7 @@ import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import LoginContainer from "../components/auth/LoginContainer";
 
-describe.only('<LoginComponent />', () => {
+describe('<LoginComponent />', () => {
     Enzyme.configure({adapter: new Adapter()});
 
     let wrapper: any;
@@ -24,6 +24,7 @@ describe.only('<LoginComponent />', () => {
         props = {
             username: "zzz",
             password: "123",
+            errors: {username: '', password: ''},
             onChange: jest.fn(),
             onSubmit: jest.fn()
         };
@@ -35,6 +36,7 @@ describe.only('<LoginComponent />', () => {
     describe('render LoginComponent', () => {
 
         it('render Container', () => {
+            console.log('ttt');
             expect(wrapper.find(Container)).toHaveLength(1);
         });
 

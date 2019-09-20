@@ -22,7 +22,7 @@ import {Router} from 'react-router-dom'
 import {createMemoryHistory} from 'history'
 import {applyMiddleware, createStore} from "redux";
 
-import {fireEvent, render, wait} from '@testing-library/react'
+import {fireEvent, render, wait, cleanup } from '@testing-library/react'
 import thunk from "redux-thunk";
 import AuthReducer, {initState} from "../../reducers/AuthReducer";
 import HttpClient from "../../config/api/HttpClient";
@@ -30,24 +30,17 @@ import HttpClient from "../../config/api/HttpClient";
 
 const store = createStore(AuthReducer, initState, applyMiddleware(thunk));
 
-describe('<LoginComponent />', () => {
+describe.only('<LoginComponent />', () => {
     Enzyme.configure({adapter: new Adapter()});
 
-    let props: ILoginComponentProps;
     let wrapper: any;
     let wrapperContainer: any;
 
     beforeEach(() => {
-        props = {
-            username: "zzz",
-            password: "123",
-            onChange: jest.fn(),
-            onSubmit: jest.fn()
-        };
+
 
         const history = createMemoryHistory()
 
-        wrapper = shallow(<LoginComponent {...props}/>);
         wrapperContainer = render(
             <Provider store={store}>
                 <Router history={history}>
@@ -55,24 +48,13 @@ describe('<LoginComponent />', () => {
                 </Router>
             </Provider>
         );
-    })
-
-    it('render children', () => {
-
-        expect(wrapper.find(Container)).toHaveLength(1);
-        expect(wrapper.find(CssBaseline)).toHaveLength(1);
-        expect(wrapper.find('div')).toHaveLength(1);
-        expect(wrapper.find('form')).toHaveLength(1);
-        expect(wrapper.find(Avatar)).toHaveLength(1);
-        expect(wrapper.find(Typography)).toHaveLength(1);
-        expect(wrapper.find(TextField)).toHaveLength(2);
-        expect(wrapper.find(FormControlLabel)).toHaveLength(1);
-        expect(wrapper.find(Button)).toHaveLength(1);
-        expect(wrapper.find(Grid)).toHaveLength(2);
-        expect(wrapper.find(Link)).toHaveLength(1);
     });
 
+    afterEach(cleanup);
+
     it('Login success', async () => {
+
+        console.log('test 2222');
 
         let fakeData = {
             status: 200,
@@ -121,4 +103,26 @@ describe('<LoginComponent />', () => {
         });
 
     }, 30000);
+
+    it('should fail with validation error: minimal username length', () => {
+
+        const {getByTestId, getByText} = wrapperContainer;
+
+        const eventName = {target: {name: "username", value: "cavi"}};
+        const eventPassword = {target: {name: "password", value: "123123"}};
+
+        fireEvent.change(getByTestId('username'), eventName)
+        fireEvent.change(getByTestId('password'), eventPassword)
+
+
+        fireEvent(
+            getByText('Sign Inn'),
+            new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+            })
+        );
+
+        expect(getByText('Minimal length is 5').textContent).toBe('Minimal length is 5');
+    });
 });
