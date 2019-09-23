@@ -31,8 +31,8 @@ describe('Render Login component', () => {
     it('should render correctly', () => {
         expect(wrapper.find(Container)).toHaveLength(1);
         expect(wrapper.find(CssBaseline)).toHaveLength(1);
-        expect(wrapper.find(`[data-test="loginBox"]`)).toHaveLength(1);
-        expect(wrapper.find(`[data-test="loginForm"]`)).toHaveLength(1);
+        expect(wrapper.find(`[data-testid="loginBox"]`)).toHaveLength(1);
+        expect(wrapper.find(`[data-testid="loginForm"]`)).toHaveLength(1);
         expect(wrapper.find(Avatar)).toHaveLength(1);
         expect(wrapper.find(Typography)).toHaveLength(1);
         expect(wrapper.find(FormControlLabel)).toHaveLength(1);

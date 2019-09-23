@@ -16,7 +16,6 @@ import Container from '@material-ui/core/Container';
 // Custom imports
 import {AuthAsset} from "../../assets/material/AuthAsset";
 import {ILoginComponentProps} from "../../models/AuthModel";
-import SnackbarComponent from "../common/SnackbarComponent";
 
 const LoginComponent = React.memo((props: ILoginComponentProps) => {
     const classes = AuthAsset();  // assign auth styles to classes
@@ -27,7 +26,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
         <Container component="main" maxWidth="xs">
             {/*<SnackbarComponent />*/}
             <CssBaseline />
-            <div className={classes.paper} data-test='loginBox'>
+            <div className={classes.paper} data-testid='loginBox'>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
@@ -35,7 +34,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate data-test='loginForm'>
+                <form className={classes.form} noValidate data-testid='loginForm'>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -51,7 +50,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                             [username]
                         )}
                     />
-                    <div>{errors.username}</div>
+                    <div data-testid='form-error'>{errors.username}</div>
                     {/*<div>Minimal length is 5</div>*/}
                     <TextField
                         variant="outlined"
