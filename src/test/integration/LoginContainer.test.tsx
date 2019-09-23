@@ -30,7 +30,7 @@ import HttpClient from "../../config/api/HttpClient";
 
 const store = createStore(AuthReducer, initState, applyMiddleware(thunk));
 
-describe.only('<LoginComponent />', () => {
+describe('<LoginComponent />', () => {
     Enzyme.configure({adapter: new Adapter()});
 
     let wrapper: any;
@@ -53,8 +53,6 @@ describe.only('<LoginComponent />', () => {
     afterEach(cleanup);
 
     it('Login success', async () => {
-
-        console.log('test 2222');
 
         let fakeData = {
             status: 200,
@@ -113,7 +111,6 @@ describe.only('<LoginComponent />', () => {
 
         fireEvent.change(getByTestId('username'), eventName)
         fireEvent.change(getByTestId('password'), eventPassword)
-
 
         fireEvent(
             getByText('Sign Inn'),
