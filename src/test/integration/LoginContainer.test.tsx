@@ -30,7 +30,7 @@ import HttpClient from "../../config/api/HttpClient";
 
 const store = createStore(AuthReducer, initState, applyMiddleware(thunk));
 
-describe.only('<LoginComponent />', () => {
+describe('<LoginComponent />', () => {
     Enzyme.configure({adapter: new Adapter()});
 
     let wrapper: any;
@@ -53,8 +53,6 @@ describe.only('<LoginComponent />', () => {
     afterEach(cleanup);
 
     it('Login success', async () => {
-
-        console.log('test 2222');
 
         let fakeData = {
             status: 200,
@@ -105,14 +103,13 @@ describe.only('<LoginComponent />', () => {
 
     it('should fail with validation error: minimal username length', () => {
 
-        const {getByTestId, getByText} = wrapperContainer;
+        const {getByTestId, getByText, container} = wrapperContainer;
 
         const eventName = {target: {name: "username", value: "cavi"}};
         const eventPassword = {target: {name: "password", value: "123123"}};
 
         fireEvent.change(getByTestId('username'), eventName)
         fireEvent.change(getByTestId('password'), eventPassword)
-
 
         fireEvent(
             getByText('Sign Inn'),
@@ -122,6 +119,6 @@ describe.only('<LoginComponent />', () => {
             })
         );
 
-        expect(getByText('Minimal length is 5').textContent).toBe('Minimal length is 5');
+        expect(getByTestId('form-error').textContent).toBe('Minimal length is 5');
     });
 });
