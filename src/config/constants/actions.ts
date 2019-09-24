@@ -10,3 +10,4 @@ export const HandleSpinner = 'HANDLE_SPINNER';
 
 // Admin
 export const ADMIN_MENU_ACTION = 'SET_ADMIN_MENU';
+export const ADMIN_PLUGIN_ACTION = 'GET_ADMIN_PLUGINS';

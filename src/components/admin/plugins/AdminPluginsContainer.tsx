@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {connect} from "react-redux";
 
 // Custom imports
-import AdminPluginsComponent from './AdminPluginsComponent'
-
+import AdminPluginsComponent from './AdminPluginsComponent';
+import {GetAdminPlugins} from '../../../actions/admin/AdminPluginAction';
+import {IMainReduxState} from "../../../models/redux/ReduxModel";
 
 function a11yProps(index: number) {
     return {
@@ -11,9 +13,12 @@ function a11yProps(index: number) {
     };
 }
 
-const AdminPluginsContainer = React.memo(() => {
-
+const AdminPluginsContainer = React.memo((props: any) => {
     const [value, setValue] = React.useState(0);
+
+    useEffect(() => {  // get plugins details
+       props.GetAdminPlugins();
+    }, []);
 
     function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
         setValue(newValue);
@@ -33,4 +38,13 @@ const AdminPluginsContainer = React.memo(() => {
     return <AdminPluginsComponent {...adminPluginsComponentProps} />;
 });
 
-export default AdminPluginsContainer;
+const mapDispatchToProps = {
+    GetAdminPlugins
+};
+
+const mapStateToProps = (state: IMainReduxState) => {
+console.log('stateeeeeeeeeeee ', state)
+    return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminPluginsContainer);

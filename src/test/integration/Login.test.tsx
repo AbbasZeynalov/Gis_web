@@ -85,7 +85,6 @@ describe.only('<LoginComponent />', () => {
         fireEvent.change(getByTestId('username'), eventName)
         fireEvent.change(getByTestId('password'), eventPassword)
 
-
         fireEvent(
             getByText('Sign Inn'),
             new MouseEvent('click', {
