@@ -8,7 +8,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import {ADMIN_PLUGINS, ADMIN_USERS} from "../../config/constants/routes";
 import {IAdminMenuAction, IAdminMenuState} from "../../models/redux/AdminMenuReduxModel";
 
-const initState: IAdminMenuState = {
+export const initState: IAdminMenuState = {
     menuItems: [
         {
             title: 'Plugins',
@@ -24,7 +24,6 @@ const initState: IAdminMenuState = {
 };
 
 const AdminMenuReducer = (state: IAdminMenuState = initState, action: IAdminMenuAction) => {
-
     switch (action.type) {
         default:
             return state;

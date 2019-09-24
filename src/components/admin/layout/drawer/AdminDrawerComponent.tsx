@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import { compose } from 'redux'
 
 // Material imports
 import IconButton from "@material-ui/core/IconButton";
@@ -24,8 +23,6 @@ const AdminDrawerComponent = React.memo((props: IAdminDrawerComponentProps) => {
     const theme = useTheme();
     const {handleDrawer, open, menuItems} = props;
 
-    console.log(props.menuItems)
-
     return (
         <Drawer
             variant="permanent"
@@ -41,11 +38,11 @@ const AdminDrawerComponent = React.memo((props: IAdminDrawerComponentProps) => {
             }}
             open={open}
         >
-            <div className={classes.toolbar}>
-                <div className={classes.toolbarText}>
+            <div className={classes.toolbar} data-testid='drawer-header'>
+                <div className={classes.toolbarText} data-testid='drawer-header__title'>
                     Admin Panel
                 </div>
-                <IconButton onClick={() => handleDrawer(false)}>
+                <IconButton onClick={() => handleDrawer(false)} data-testid='drawer-header__icon'>
                     {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
             </div>

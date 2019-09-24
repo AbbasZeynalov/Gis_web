@@ -27,8 +27,9 @@ const AdminAppBarComponent = React.memo((props: IAdminAppBarComponentProps) => {
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
-                    onClick={() => handleDrawer(true)}
                     edge="start"
+                    data-testid='open-button'
+                    onClick={() => handleDrawer(true)}
                     className={clsx(classes.menuButton, {
                         [classes.hide]: open,
                     })}

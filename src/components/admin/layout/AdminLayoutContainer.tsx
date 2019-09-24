@@ -14,7 +14,7 @@ const AdminLayoutContainer = React.memo(() => {
     const layoutComponentProps: IAdminLayoutComponentProps = { // Layout Props
         open: open,
         handleDrawer: handleDrawer
-    }
+    };
 
     return <AdminLayoutComponent {...layoutComponentProps} />;
 });
