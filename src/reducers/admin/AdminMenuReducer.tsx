@@ -28,6 +28,6 @@ const AdminMenuReducer = (state: IAdminMenuState = initState, action: IAdminMenu
         default:
             return state;
     }
-}
+};
 
 export default AdminMenuReducer;

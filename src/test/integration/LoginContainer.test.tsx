@@ -82,11 +82,11 @@ describe('<LoginComponent />', () => {
 
     }, 30000);
 
-    it('should fail with validation error: minimal username length', () => {
+    it('should fail with validation error: empty username', () => {
 
-        const {getByTestId, getByText, container} = wrapperContainer;
+        const {getByTestId, getByText} = wrapperContainer;
 
-        const eventName = {target: {name: "username", value: "cavi"}};
+        const eventName = {target: {name: "username", value: ""}};
         const eventPassword = {target: {name: "password", value: "123123"}};
 
         fireEvent.change(getByTestId('username'), eventName)
@@ -100,6 +100,6 @@ describe('<LoginComponent />', () => {
             })
         );
 
-        expect(getByTestId('form-error').textContent).toBe('Minimal length is 5');
+        expect(getByText('İstifadəçi adını daxil edin').textContent).toBe('İstifadəçi adını daxil edin');
     });
 });

@@ -6,8 +6,8 @@ import {IResponse} from "../models/HttpModel";
 
 export const Login = (loginForm: ILoginForm) => {
 
-    return (dispatch: Dispatch): Promise<any> => {
-        return LoginService(loginForm).then((res: IResponse) => {
+    return async (dispatch: Dispatch): Promise<any> => {
+        return await LoginService(loginForm).then((res: IResponse) => {
             if (!res.errors) {
                 let user = res.data.data.login;
 
@@ -18,8 +18,6 @@ export const Login = (loginForm: ILoginForm) => {
                     type: LOGIN_ACTION,
                     payload: user
                 });
-
-                return true;
             }
         })
     }

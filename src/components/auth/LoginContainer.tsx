@@ -8,41 +8,37 @@ import {ILoginComponentProps, ILoginContainerProps} from "../../models/AuthModel
 import {Login} from "../../actions/AuthAction";
 import {IMainReduxState} from "../../models/redux/ReduxModel";
 import {withRouter} from "react-router";
+import {CheckFormValid} from "../../utils/validation/CheckFormValid";
+
+const errMessage: {[index: string]: string} = {
+    username: 'İstifadəçi adını daxil edin',
+    password: 'Şifrəni daxil edin',
+};
+
+const formInputs = ['username', 'password'];
 
 const LoginContainer = React.memo((props: ILoginContainerProps) => {
-
     const [inputs, setInputs] = useState({username: '', password: ''});
-    const [errors, setError] = useState({username: '', password: ''})
-    let token = props.Auth && props.Auth.access_token;
-
-    // useEffect(() => {
-    //     //@ts-ignore
-    //     token && props.location.push('/')
-    // },[token]);
+    const [errors, setError] = useState({username: '', password: ''});
 
     const onChange = (event: BaseSyntheticEvent) => {  // Handle inputs change
         event.persist();
-        setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+        let input = event.target.name;
+        let value = event.target.value;
+
+        setInputs(inputs => ({...inputs, [input]: value || ''})); // set input value
+        setError(errors => ({ ...errors, [input]: !value ? errMessage[input] : ''}));  // set input error
     };
 
-    const onSubmit = (e: MouseEvent<HTMLElement>) => {  // Handle form submit
-
+    const onSubmit = async (e: MouseEvent<HTMLFormElement>) => {  // Handle form submit
         e.preventDefault();
+        const isValid = CheckFormValid(e, formInputs, errMessage);
 
-        if(inputs.username.length < 5) {
-
-            setError({
-                ...errors,
-                username: 'Minimal length is 5'
-            })
-        }
-        else {
-            setError({
-                username: '',
-                password: ''
-            })
-
-            props.Login(inputs) // Login action
+        if (isValid === true) {
+            await props.Login(inputs)  // Login action
+                .then(() => props.history.push('/'))
+        } else {
+            setError(errors => ({ ...errors, ...isValid}))
         }
     };
 
@@ -61,7 +57,6 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state: IMainReduxState) => {  // add state to props
-
     return {
         auth: state.Auth
     }

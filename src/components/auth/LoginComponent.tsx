@@ -34,7 +34,12 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate data-testid='loginForm'>
+                <form
+                    noValidate
+                    data-testid='loginForm'
+                    onSubmit={(e: MouseEvent<HTMLFormElement>) => onSubmit(e)}
+                    className={classes.form}
+                >
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -43,6 +48,8 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                         name="username"
                         autoComplete="email"
                         autoFocus
+                        error={!!errors.username}
+                        helperText={errors.username}
                         inputProps={{ "data-testid": "username" }}
                         value={username}
                         onChange={React.useCallback(  // shallow compare state change
@@ -50,8 +57,7 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                             [username]
                         )}
                     />
-                    <div data-testid='form-error'>{errors.username}</div>
-                    {/*<div>Minimal length is 5</div>*/}
+                    {/*<div data-testid='form-error'>{errors.username}</div>*/}
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -61,6 +67,8 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        error={!!errors.password}
+                        helperText={errors.password}
                         value={password}
                         inputProps={{ "data-testid": "password" }}
                         onChange={React.useCallback(  // shallow compare state change
@@ -74,11 +82,11 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                     />
                     <Button
                         fullWidth
+                        type='submit'
                         variant="contained"
                         color="primary"
                         className={classes.submit}
                         data-testid={'submit'}
-                        onClick={(e: MouseEvent<HTMLElement>) => onSubmit(e)}
                     >
                         Sign Inn
                     </Button>

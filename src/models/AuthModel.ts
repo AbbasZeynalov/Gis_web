@@ -13,7 +13,7 @@ export interface ILoginComponentProps {
     password: string
     errors: ILoginForm
     onChange: (e: BaseSyntheticEvent) => void
-    onSubmit: (e: MouseEvent<HTMLElement>) => void
+    onSubmit: (e: MouseEvent<HTMLFormElement>) => void
 }
 
 export interface ILoginForm {

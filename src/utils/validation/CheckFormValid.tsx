@@ -1,23 +1,11 @@
-import {FormEvent} from "react";
-
 export const CheckFormValid = (event: any, inputs: string[], errMessage: any) => {
-
-    let errorsArr: string[] = [];
-    let queryArr: any = [];
+    let errorsArr: any = {};
 
     inputs.map((input: string) => {
         let value = event.target.querySelector(`input[name=${input}]`).value;
 
-        queryArr[input] = value;
-
-        if (value === '') {
-            // @ts-ignore
-            errorsArr[input] = {
-                error: true,
-                errorMessage: errMessage[input],
-                value: ''
-            }
-        }
+        if (value === '')
+            errorsArr[input] = errMessage[input]
     });
 
     if (Object.keys(errorsArr).length) {
@@ -25,5 +13,5 @@ export const CheckFormValid = (event: any, inputs: string[], errMessage: any) =>
     } else {
         return true;
     }
-}
+};
 
