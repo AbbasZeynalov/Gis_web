@@ -11,7 +11,7 @@ import {useDetailModalStyles} from "../../../../../assets/material/AdminAsset";
 import Button from "@material-ui/core/Button";
 import DetailTabContainer from "./tabs/DetailTabContainer";
 
-const PluginDetailModal = React.memo((props: IPluginDetailModalProps) => {
+const PluginDetailModal = (props: IPluginDetailModalProps) => {
     const classes = useDetailModalStyles();
     const {openDetailsModal, handleDetailsModal} = props;
 
@@ -46,6 +46,6 @@ const PluginDetailModal = React.memo((props: IPluginDetailModalProps) => {
             </Grid>
         </SpringModal>
     )
-});
+};
 
 export default PluginDetailModal;

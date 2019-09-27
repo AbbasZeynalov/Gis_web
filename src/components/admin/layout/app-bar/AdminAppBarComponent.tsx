@@ -12,7 +12,7 @@ import AppBar from "@material-ui/core/AppBar/AppBar";
 import {IAdminAppBarComponentProps} from "../../../../models/admin/AdminLayoutModel";
 import {useAdminAppBarStyles} from "../../../../assets/material/AdminAsset";
 
-const AdminAppBarComponent = React.memo((props: IAdminAppBarComponentProps) => {
+const AdminAppBarComponent = (props: IAdminAppBarComponentProps) => {
     const classes = useAdminAppBarStyles();
     const {handleDrawer, open} = props;
 
@@ -42,6 +42,6 @@ const AdminAppBarComponent = React.memo((props: IAdminAppBarComponentProps) => {
             </Toolbar>
         </AppBar>
     )
-});
+};
 
 export default AdminAppBarComponent;

@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Clear from "@material-ui/icons/Clear"
 import {Link} from "react-router-dom";
 
-const PluginConfigureModal = React.memo((props: IPluginConfigureModalProps) => {
+const PluginConfigureModal = (props: IPluginConfigureModalProps) => {
     const classes = useConfigureModalStyles();
     const {openConfigureModal, handleConfigureModal} = props;
 
@@ -62,6 +62,6 @@ const PluginConfigureModal = React.memo((props: IPluginConfigureModalProps) => {
             </Grid>
         </SpringModal>
     )
-});
+};
 
 export default PluginConfigureModal;

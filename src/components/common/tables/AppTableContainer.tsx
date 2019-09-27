@@ -4,7 +4,7 @@ import {IAppTableContainer} from "../../../models/AppTableModel";
 
 export const MyContext = React.createContext({page: 0, rowsPerPage: 0});
 
-const AppTableContainer = React.memo((props: IAppTableContainer) => {
+const AppTableContainer = (props: IAppTableContainer) => {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const {children, dataCount} = props;
@@ -33,6 +33,6 @@ const AppTableContainer = React.memo((props: IAppTableContainer) => {
     };
 
     return <AppTableComponent {...appTableComponentProps} />;
-});
+};
 
 export default AppTableContainer;

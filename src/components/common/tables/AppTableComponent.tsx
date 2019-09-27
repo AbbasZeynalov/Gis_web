@@ -9,7 +9,7 @@ import {MyContext} from "./AppTableContainer";
 import {AppTableAsset} from "../../../assets/material/TableAsset";
 import {IAppTableComponentProps} from "../../../models/AppTableModel";
 
-const AppTableComponent = React.memo((props: IAppTableComponentProps) => {
+const AppTableComponent = (props: IAppTableComponentProps) => {
     const classes = AppTableAsset();
     const {children, dataCount, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage} = props;
 
@@ -43,6 +43,6 @@ const AppTableComponent = React.memo((props: IAppTableComponentProps) => {
             </div>
         </Paper>
     )
-});
+};
 
 export default AppTableComponent;

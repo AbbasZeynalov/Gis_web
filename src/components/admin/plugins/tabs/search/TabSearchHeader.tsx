@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 // Custom imports
 import {ITabSearchHeaderComponentProps} from "../../../../../models/admin/AdminPluginsModel";
 
-const TabSearchHeader = React.memo((props: ITabSearchHeaderComponentProps) => {
+const TabSearchHeader = (props: ITabSearchHeaderComponentProps) => {
     const {SyncPlugins} = props;
 
     return (
@@ -28,6 +28,6 @@ const TabSearchHeader = React.memo((props: ITabSearchHeaderComponentProps) => {
             </Grid>
         </Grid>
     )
-});
+};
 
 export default TabSearchHeader;

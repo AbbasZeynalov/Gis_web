@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-const TabInstalledHeader = React.memo(() => {
+const TabInstalledHeader = () => {
     const classes = useStyles();
 
     return (
@@ -32,6 +32,6 @@ const TabInstalledHeader = React.memo(() => {
             </Grid>
         </Grid>
     )
-});
+};
 
 export default TabInstalledHeader;

@@ -23,7 +23,7 @@ interface TablePaginationActionsProps {
     onChangePage: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, newPage: number) => void;
 }
 
-const TablePaginationActions = React.memo((props: TablePaginationActionsProps) => {
+const TablePaginationActions = (props: TablePaginationActionsProps) => {
     const classes = useStyles1();
     const theme = useTheme();
     const { count, page, rowsPerPage, onChangePage } = props;
@@ -72,5 +72,5 @@ const TablePaginationActions = React.memo((props: TablePaginationActionsProps) =
             </IconButton>
         </div>
     );
-});
+};
 

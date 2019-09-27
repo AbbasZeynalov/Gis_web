@@ -7,7 +7,7 @@ import AppBar from "@material-ui/core/AppBar/AppBar";
 // Custom imports
 import {IAppBarTabPanel} from "../../../models/TabPanelModel";
 
-const AppBarTabPanelComponent = React.memo((props: IAppBarTabPanel) => {
+const AppBarTabPanelComponent = (props: IAppBarTabPanel) => {
     const {value, handleChange, children} = props;
 
     return (
@@ -24,6 +24,6 @@ const AppBarTabPanelComponent = React.memo((props: IAppBarTabPanel) => {
             </Tabs>
         </AppBar>
     )
-});
+};
 
 export default AppBarTabPanelComponent;

@@ -1,7 +1,7 @@
 import React from "react";
 import TabSearchComponent from "./TabSearchComponent";
 
-const TabSearchContainer = React.memo(() => {
+const TabSearchContainer = () => {
 
     const SyncPlugins = () => {
         console.log('sync plugins')
@@ -12,6 +12,6 @@ const TabSearchContainer = React.memo(() => {
     };
 
     return <TabSearchComponent {...searchComponentProps} />
-});
+};
 
 export default TabSearchContainer;

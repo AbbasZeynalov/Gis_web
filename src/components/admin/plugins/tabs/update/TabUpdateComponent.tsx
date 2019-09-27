@@ -31,7 +31,7 @@ const rows = [
     createData('Oreo', 437, 18.0),
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
-const TabUpdateComponent = React.memo((props: ITabUpdateComponentProps) => {
+const TabUpdateComponent = (props: ITabUpdateComponentProps) => {
     const {InstallPlugins} = props;
 
     return (
@@ -64,7 +64,7 @@ const TabUpdateComponent = React.memo((props: ITabUpdateComponentProps) => {
            </AppTableContainer>
        </>
     )
-});
+};
 
 export default TabUpdateComponent;
 

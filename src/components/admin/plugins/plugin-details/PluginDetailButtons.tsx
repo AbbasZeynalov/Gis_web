@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import {IPluginDetailButtonsProps} from "../../../../models/admin/AdminPluginsModel";
 import {usePluginDetailButtonsStyle} from "../../../../assets/material/AdminAsset";
 
-const PluginDetailButtons = React.memo((props: IPluginDetailButtonsProps) => {
+const PluginDetailButtons = (props: IPluginDetailButtonsProps) => {
     const classes = usePluginDetailButtonsStyle();
     const {actionButtons, InstallPlugin, ActivatePlugin, handleDetailsModal, handleConfigureModal, handleUninstallModal} = props;
 
@@ -76,6 +76,6 @@ const PluginDetailButtons = React.memo((props: IPluginDetailButtonsProps) => {
            }
        </>
     )
-});
+};
 
 export default PluginDetailButtons;

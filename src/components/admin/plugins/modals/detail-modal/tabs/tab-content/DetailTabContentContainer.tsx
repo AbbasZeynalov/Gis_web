@@ -46,13 +46,13 @@ let mockData = {
     ]
 };
 
-const DetailTabContentContainer = React.memo((props: IDetailTabContentContainerProps) => {
+const DetailTabContentContainer = (props: IDetailTabContentContainerProps) => {
     const [data, useData] = useState([{name: '', description: ''}]);
     const {tab} = props;
 
     useEffect(() => useData(mockData[tab]), []);
 
     return <DetailTabContentComponent data={data} />
-});
+};
 
 export default DetailTabContentContainer;

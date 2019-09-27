@@ -1,7 +1,7 @@
 import React from "react";
 import TabUpdateComponent from "./TabUpdateComponent";
 
-const TabUpdateContainer = React.memo(() => {
+const TabUpdateContainer = () => {
 
     const InstallPlugins = () => {
         console.log('install all plugins')
@@ -12,6 +12,6 @@ const TabUpdateContainer = React.memo(() => {
     };
 
     return <TabUpdateComponent {...updateComponentProps} />
-});
+};
 
 export default TabUpdateContainer;

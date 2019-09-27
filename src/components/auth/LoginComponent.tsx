@@ -17,7 +17,7 @@ import Container from '@material-ui/core/Container';
 import {AuthAsset} from "../../assets/material/AuthAsset";
 import {ILoginComponentProps} from "../../models/AuthModel";
 
-const LoginComponent = React.memo((props: ILoginComponentProps) => {
+const LoginComponent = (props: ILoginComponentProps) => {
     const classes = AuthAsset();  // assign auth styles to classes
 
     const {username, password, onChange, onSubmit} = props;
@@ -95,6 +95,6 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
             </div>
         </Container>
     );
-});
+};
 
 export default LoginComponent;

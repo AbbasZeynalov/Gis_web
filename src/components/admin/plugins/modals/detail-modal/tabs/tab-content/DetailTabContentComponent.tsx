@@ -6,7 +6,7 @@ interface IDetailTabContentComponentProps {
     data: any
 }
 
-const DetailTabContentComponent = React.memo((props: IDetailTabContentComponentProps) => {
+const DetailTabContentComponent = (props: IDetailTabContentComponentProps) => {
     const classes = useDetailModalTabContentStyles();
     const {data} = props;
 
@@ -20,6 +20,6 @@ const DetailTabContentComponent = React.memo((props: IDetailTabContentComponentP
             </Typography>
         </div>
     ))
-});
+};
 
 export default DetailTabContentComponent;

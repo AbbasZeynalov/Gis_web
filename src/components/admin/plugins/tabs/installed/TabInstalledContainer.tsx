@@ -1,9 +1,9 @@
 import React from "react";
 import TabInstalledComponent from "./TabInstalledComponent";
 
-const TabInstalledContainer = React.memo(() => {
+const TabInstalledContainer = () => {
 
     return <TabInstalledComponent />
-});
+};
 
 export default TabInstalledContainer;

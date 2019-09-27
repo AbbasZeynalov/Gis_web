@@ -7,7 +7,7 @@ import {IAdminAppBarComponentProps, IAdminLayoutComponentProps} from "../../../m
 import {AdminRoutes} from "../../../Routes";
 import ErrorBoundary from "../../common/ErrorBoudary";
 
-const AdminLayoutComponent = React.memo((props: IAdminLayoutComponentProps) => {
+const AdminLayoutComponent = (props: IAdminLayoutComponentProps) => {
     const classes = useAdminLayoutStyles();  // Admin Layout styles
     const {open, handleDrawer} = props;  // get properties from props
 
@@ -39,6 +39,6 @@ const AdminLayoutComponent = React.memo((props: IAdminLayoutComponentProps) => {
             </main>
         </div>
     )
-});
+};
 
 export default AdminLayoutComponent;

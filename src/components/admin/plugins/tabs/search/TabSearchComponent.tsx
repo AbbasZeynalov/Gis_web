@@ -33,7 +33,7 @@ const rows = [
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 
-const TabSearchComponent = React.memo((props: ITabSearchComponentProps) => {
+const TabSearchComponent = (props: ITabSearchComponentProps) => {
     const {SyncPlugins} = props;
 
     return (
@@ -66,6 +66,6 @@ const TabSearchComponent = React.memo((props: ITabSearchComponentProps) => {
             </AppTableContainer>
         </>
     )
-});
+};
 
 export default TabSearchComponent;

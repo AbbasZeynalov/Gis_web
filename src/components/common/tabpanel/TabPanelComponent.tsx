@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import {TabPanelProps} from "../../../models/TabPanelModel";
 
-const TabPanelComponent = React.memo((props: TabPanelProps) => {
+const TabPanelComponent = (props: TabPanelProps) => {
     const { children, value, index, ...other } = props;
 
     return (
@@ -18,6 +18,6 @@ const TabPanelComponent = React.memo((props: TabPanelProps) => {
             <Box p={3}>{children}</Box>
         </Typography>
     );
-});
+};
 
 export default TabPanelComponent;

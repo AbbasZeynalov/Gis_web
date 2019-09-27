@@ -4,7 +4,7 @@ import React from 'react';
 import {IAdminLayoutComponentProps} from "../../../models/admin/AdminLayoutModel";
 import AdminLayoutComponent from "./AdminLayoutComponent";
 
-const AdminLayoutContainer = React.memo(() => {
+const AdminLayoutContainer = () => {
     const [open, setOpen] = React.useState(true);  // set open state for handle drawer
 
     const handleDrawer = (isOpen: boolean) => {
@@ -17,6 +17,6 @@ const AdminLayoutContainer = React.memo(() => {
     };
 
     return <AdminLayoutComponent {...layoutComponentProps} />;
-});
+};
 
 export default AdminLayoutContainer;

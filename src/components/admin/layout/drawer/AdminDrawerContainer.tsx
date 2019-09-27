@@ -6,7 +6,7 @@ import {IMainReduxState} from "../../../../models/redux/ReduxModel";
 import {compose} from "redux";
 import {connect} from "react-redux";
 
-const AdminDrawerContainer = React.memo((props: IAdminDrawerContainerProps) => {
+const AdminDrawerContainer = (props: IAdminDrawerContainerProps) => {
     const {open, handleDrawer, menuItems} = props;
 
     const adminDrawerProps: IAdminDrawerComponentProps = {  // Drawer props
@@ -16,7 +16,7 @@ const AdminDrawerContainer = React.memo((props: IAdminDrawerContainerProps) => {
     };
 
     return <AdminDrawerComponent {...adminDrawerProps} />
-});
+};
 
 const mapDispatchToProps = {
     SetAdminMenu

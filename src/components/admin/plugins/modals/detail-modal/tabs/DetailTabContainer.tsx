@@ -11,7 +11,7 @@ function a11yProps(index: number) {
     };
 }
 
-const DetailTabContainer = React.memo(() => {
+const DetailTabContainer = () => {
 
     const [value, setValue] = React.useState(0);
 
@@ -31,6 +31,6 @@ const DetailTabContainer = React.memo(() => {
     };
 
     return <DetailTabComponent {...tabComponentProps} />;
-});
+};
 
 export default DetailTabContainer;

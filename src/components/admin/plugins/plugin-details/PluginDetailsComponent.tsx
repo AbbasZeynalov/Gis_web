@@ -14,7 +14,7 @@ import PluginUninstallModal from "../modals/uninstall-modal/PluginUninstallModal
 import PluginConfigureModal from "../modals/configure-modal/PluginConfigureModal";
 import PluginDetailModal from "../modals/detail-modal/PluginDetailModal";
 
-const PluginDetailsComponent = React.memo((props: IPluginDetailsComponentProps) => {
+const PluginDetailsComponent = (props: IPluginDetailsComponentProps) => {
     const classes = usePluginDetailsAsset();
 
     const detailButtonsProps = {
@@ -82,6 +82,6 @@ const PluginDetailsComponent = React.memo((props: IPluginDetailsComponentProps) 
             />
         </>
     )
-});
+};
 
 export default PluginDetailsComponent;

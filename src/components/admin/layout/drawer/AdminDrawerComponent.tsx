@@ -18,7 +18,7 @@ import {IAdminDrawerComponentProps, IAdminMenuItems} from "../../../../models/ad
 import {useAdminDrawerStyles} from "../../../../assets/material/AdminAsset";
 import {StyledNavLink} from "../../../common/StyledComponents";
 
-const AdminDrawerComponent = React.memo((props: IAdminDrawerComponentProps) => {
+const AdminDrawerComponent = (props: IAdminDrawerComponentProps) => {
     const classes = useAdminDrawerStyles();
     const theme = useTheme();
     const {handleDrawer, open, menuItems} = props;
@@ -65,6 +65,6 @@ const AdminDrawerComponent = React.memo((props: IAdminDrawerComponentProps) => {
             </List>
         </Drawer>
     )
-});
+};
 
 export default AdminDrawerComponent;

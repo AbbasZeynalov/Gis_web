@@ -32,7 +32,7 @@ const rows = [
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 
-const TabInstalledComponent = React.memo(() => {
+const TabInstalledComponent = () => {
 
     return (
         <>
@@ -62,6 +62,6 @@ const TabInstalledComponent = React.memo(() => {
             </AppTableContainer>
         </>
     )
-});
+};
 
 export default TabInstalledComponent;

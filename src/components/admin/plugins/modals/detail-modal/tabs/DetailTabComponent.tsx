@@ -15,7 +15,7 @@ import TabInstalledContainer from "../../.././tabs/installed/TabInstalledContain
 import TabSearchContainer from "../../../tabs/search/TabSearchContainer";
 import DetailTabContentContainer from "./tab-content/DetailTabContentContainer";
 
-const DetailTabComponent = React.memo((props: IDetailTabComponentProps) => {
+const DetailTabComponent = (props: IDetailTabComponentProps) => {
     const classes = useDetailModalTabStyles();
     const theme = useTheme();
     const {value, handleChange, handleChangeIndex, a11yProps} = props;
@@ -68,6 +68,6 @@ const DetailTabComponent = React.memo((props: IDetailTabComponentProps) => {
             </SwipeableViews>
         </div>
     )
-});
+};
 
 export default DetailTabComponent;

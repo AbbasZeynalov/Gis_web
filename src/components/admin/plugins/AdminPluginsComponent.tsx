@@ -14,7 +14,7 @@ import TabUpdateContainer from "./tabs/update/TabUpdateContainer";
 import TabInstalledContainer from "./tabs/installed/TabInstalledContainer";
 import TabSearchContainer from "./tabs/search/TabSearchContainer";
 
-const AdminPluginsComponent = React.memo((props: IAdminPluginsComponentProps) => {
+const AdminPluginsComponent = (props: IAdminPluginsComponentProps) => {
     const classes = useAdminTabsStyles();
     const theme = useTheme();
     const {value, handleChange, handleChangeIndex, a11yProps} = props;
@@ -67,6 +67,6 @@ const AdminPluginsComponent = React.memo((props: IAdminPluginsComponentProps) =>
             </SwipeableViews>
         </div>
     )
-});
+};
 
 export default AdminPluginsComponent;

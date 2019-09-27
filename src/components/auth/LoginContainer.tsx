@@ -30,7 +30,7 @@ const LoginContainer = (props: ILoginContainerProps) => {
         }
     });
 
-    const onChange =React.useCallback( (event: BaseSyntheticEvent) => {  // Handle inputs change
+    const onChange = (event: BaseSyntheticEvent) => {  // Handle inputs change
             event.persist();
             let input = event.target.name;
             let value = event.target.value;
@@ -43,7 +43,9 @@ const LoginContainer = (props: ILoginContainerProps) => {
                 }
             }));
 
-    }, [inputs.username, inputs.password]);
+            console.log('heeeeeeeeeeeeeeeee ')
+
+    };
 
     const onSubmit = async (e: MouseEvent<HTMLFormElement>) => {  // Handle form submit
         e.preventDefault();

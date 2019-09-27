@@ -13,7 +13,7 @@ function a11yProps(index: number) {
     };
 }
 
-const AdminPluginsContainer = React.memo((props: any) => {
+const AdminPluginsContainer = (props: any) => {
     const [value, setValue] = React.useState(0);
 
     useEffect(() => {  // get plugins details
@@ -36,7 +36,7 @@ const AdminPluginsContainer = React.memo((props: any) => {
     };
     console.log('stattttttttttttttttttttttttt ', props.plugins)
     return <AdminPluginsComponent {...adminPluginsComponentProps} />;
-});
+};
 
 const mapDispatchToProps = {
     GetAdminPlugins

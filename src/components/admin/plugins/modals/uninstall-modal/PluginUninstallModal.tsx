@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import {useUninstallModalStyles} from "../../../../../assets/material/AdminAsset";
 import {IPluginUninstallModalProps} from "../../../../../models/admin/AdminPluginsModel";
 
-const PluginUninstallModal = React.memo((props: IPluginUninstallModalProps) => {
+const PluginUninstallModal = (props: IPluginUninstallModalProps) => {
     const classes = useUninstallModalStyles();
     const {openUninstallModal, handleUninstallModal} = props;
 
@@ -47,6 +47,6 @@ const PluginUninstallModal = React.memo((props: IPluginUninstallModalProps) => {
             </div>
         </SpringModal>
     )
-});
+};
 
 export default PluginUninstallModal;

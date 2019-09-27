@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import {ITabUpdateHeaderComponentProps} from "../../../../../models/admin/AdminPluginsModel";
 
-const TabUpdateHeader = React.memo((props: ITabUpdateHeaderComponentProps) => {
+const TabUpdateHeader = (props: ITabUpdateHeaderComponentProps) => {
     const {InstallPlugins} = props;
 
     return (
@@ -24,6 +24,6 @@ const TabUpdateHeader = React.memo((props: ITabUpdateHeaderComponentProps) => {
             </Grid>
         </Grid>
     )
-});
+};
 
 export default TabUpdateHeader;

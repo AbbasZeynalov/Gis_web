@@ -2,7 +2,7 @@ import React from "react";
 import PluginDetailsComponent from "./PluginDetailsComponent";
 import {IPluginDetailsContainerProps} from "../../../../models/admin/AdminPluginsModel";
 
-const PluginDetailsContainer = React.memo((props: IPluginDetailsContainerProps) => {
+const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
     const [openDetailsModal, setOpenDetailsModal] = React.useState(false);
     const [openConfigureModal, setOpenConfigureModal] = React.useState(false);
     const [openUninstallModal, setOpenUninstallModal] = React.useState(false);
@@ -41,6 +41,6 @@ const PluginDetailsContainer = React.memo((props: IPluginDetailsContainerProps) 
     };
 
     return <PluginDetailsComponent {...PluginDetailsProps} />
-});
+};
 
 export default PluginDetailsContainer;
