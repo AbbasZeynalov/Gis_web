@@ -72,3 +72,19 @@ export interface ITabSearchComponentProps {
 export interface ITabSearchHeaderComponentProps {
     SyncPlugins: () => void
 }
+
+// Plugins Data
+export interface IPluginsData {
+    totalCount: number
+    items: IPluginItem[]
+}
+
+export interface IPluginItem {
+    name: string
+    url: string
+    version: IPluginVersion[]
+}
+
+export interface IPluginVersion {
+    version: string
+}

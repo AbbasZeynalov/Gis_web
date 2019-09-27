@@ -1,15 +1,7 @@
 import React from "react";
 import AdminLayoutContainer from "../../../../components/admin/layout/AdminLayoutContainer";
-import {applyMiddleware, createStore} from "redux";
-import thunk from "redux-thunk";
-import {Provider} from "react-redux";
-import AdminMenu, {initState} from "../../../../reducers/admin/AdminMenuReducer";
-import Enzyme, {mount} from "enzyme";
+import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-
-const store = createStore(AdminMenu, initState, applyMiddleware(thunk));
-
-console.log('storeeeeeeeeeeeeeeeeeeeeeeeeeeeeee ', store.getState())
 
 describe('AdminLayoutContainer', () => {
     Enzyme.configure({adapter: new Adapter()});
@@ -21,11 +13,7 @@ describe('AdminLayoutContainer', () => {
     useStateSpy.mockImplementation((init) => [init, setState]);
 
     beforeEach(() => {
-        wrapperContainer = mount(
-            <Provider store={store}>
-                <AdminLayoutContainer />
-            </Provider>
-        );
+        wrapperContainer = shallow(<AdminLayoutContainer />);
     });
 
     it('should open drawer', function () {

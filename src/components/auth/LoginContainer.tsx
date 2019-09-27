@@ -9,6 +9,7 @@ import {Login} from "../../actions/AuthAction";
 import {IMainReduxState} from "../../models/redux/ReduxModel";
 import {withRouter} from "react-router";
 import {CheckFormValid} from "../../utils/validation/CheckFormValid";
+import {on} from "cluster";
 
 const errMessage: {[index: string]: string} = {
     username: 'İstifadəçi adını daxil edin',
@@ -17,40 +18,58 @@ const errMessage: {[index: string]: string} = {
 
 const formInputs = ['username', 'password'];
 
-const LoginContainer = React.memo((props: ILoginContainerProps) => {
-    const [inputs, setInputs] = useState({username: '', password: ''});
-    const [errors, setError] = useState({username: '', password: ''});
+const LoginContainer = (props: ILoginContainerProps) => {
+    const [inputs, setInputs] = useState({
+        username: {
+            value: '',
+            error: ''
+        },
+        password: {
+            value: '',
+            error: ''
+        }
+    });
 
-    const onChange = (event: BaseSyntheticEvent) => {  // Handle inputs change
-        event.persist();
-        let input = event.target.name;
-        let value = event.target.value;
+    const onChange =React.useCallback( (event: BaseSyntheticEvent) => {  // Handle inputs change
+            event.persist();
+            let input = event.target.name;
+            let value = event.target.value;
 
-        setInputs(inputs => ({...inputs, [input]: value || ''})); // set input value
-        setError(errors => ({ ...errors, [input]: !value ? errMessage[input] : ''}));  // set input error
-    };
+            setInputs(inputs => ({  // set input value
+                ...inputs,
+                [input]: {
+                    value: value || '',
+                    error: value ? '' : errMessage[input]
+                }
+            }));
+
+    }, [inputs.username, inputs.password]);
 
     const onSubmit = async (e: MouseEvent<HTMLFormElement>) => {  // Handle form submit
         e.preventDefault();
         const isValid = CheckFormValid(e, formInputs, errMessage);
 
         if (isValid === true) {
-            await props.Login(inputs)  // Login action
+            let loginForm = {
+                username: inputs.username.value,
+                password: inputs.password.value
+            };
+
+            await props.Login(loginForm)  // Login action
                 .then(() => props.history.push('/'))
         } else {
-            setError(errors => ({ ...errors, ...isValid}))
+            setInputs(inputs => ({ ...inputs, ...isValid}))
         }
     };
 
     const loginComponentProps: ILoginComponentProps = {  // assign props to Login component
         ...inputs,
-        errors,
         onChange: onChange,
         onSubmit: onSubmit,
     };
 
     return <LoginComponent {...loginComponentProps}/>
-});
+};
 
 const mapDispatchToProps = {
     Login

@@ -23,7 +23,6 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state: IMainReduxState) => {
-    console.log('state', state)
     return {
         menuItems: state.AdminMenu.menuItems
     }

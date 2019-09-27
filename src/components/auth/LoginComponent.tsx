@@ -20,7 +20,7 @@ import {ILoginComponentProps} from "../../models/AuthModel";
 const LoginComponent = React.memo((props: ILoginComponentProps) => {
     const classes = AuthAsset();  // assign auth styles to classes
 
-    const {username, password, onChange, onSubmit, errors} = props;
+    const {username, password, onChange, onSubmit} = props;
 
     return (
         <Container component="main" maxWidth="xs">
@@ -48,14 +48,11 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                         name="username"
                         autoComplete="email"
                         autoFocus
-                        error={!!errors.username}
-                        helperText={errors.username}
+                        error={!!username.error}
+                        helperText={username.error}
                         inputProps={{ "data-testid": "username" }}
-                        value={username}
-                        onChange={React.useCallback(  // shallow compare state change
-                            (e: BaseSyntheticEvent) => onChange(e),
-                            [username]
-                        )}
+                        value={username.value}
+                        onChange={onChange}
                     />
                     {/*<div data-testid='form-error'>{errors.username}</div>*/}
                     <TextField
@@ -67,14 +64,11 @@ const LoginComponent = React.memo((props: ILoginComponentProps) => {
                         type="password"
                         id="password"
                         autoComplete="current-password"
-                        error={!!errors.password}
-                        helperText={errors.password}
-                        value={password}
+                        error={!!password.error}
+                        helperText={password.error}
+                        value={password.value}
                         inputProps={{ "data-testid": "password" }}
-                        onChange={React.useCallback(  // shallow compare state change
-                            (e: BaseSyntheticEvent) => onChange(e),
-                            [password]
-                        )}
+                        onChange={onChange}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}

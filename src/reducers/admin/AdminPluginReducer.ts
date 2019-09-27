@@ -1,20 +1,24 @@
-import {IAdminMenuAction} from "../../models/redux/AdminMenuReduxModel";
 import {ADMIN_PLUGIN_ACTION} from "../../config/constants/actions";
+import {IMainReduxAction} from "../../models/redux/ReduxModel";
+import {IPluginItem, IPluginsData} from "../../models/admin/AdminPluginsModel";
 
 const initState = {
-    modules: ['bbbb']
+    totalCount: 0,
+    items: [] as IPluginItem[]
 };
 
-const AdminPluginReducer = (state = initState, action: IAdminMenuAction) => {
+const AdminPluginReducer = (state = initState, action: IMainReduxAction<IPluginsData>) => {
 
     switch (action.type) {
         case ADMIN_PLUGIN_ACTION:
+            console.log('payloaddd ', action.payload);
             return {
-                modules: ['test']
+                ...state,
+                ...action.payload
             };
         default:
             return state;
     }
-}
+};
 
 export default AdminPluginReducer;

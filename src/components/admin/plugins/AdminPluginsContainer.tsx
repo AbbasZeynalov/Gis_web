@@ -17,7 +17,7 @@ const AdminPluginsContainer = React.memo((props: any) => {
     const [value, setValue] = React.useState(0);
 
     useEffect(() => {  // get plugins details
-       props.GetAdminPlugins();
+       props.GetAdminPlugins(1, 3);
     }, []);
 
     function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
@@ -34,7 +34,7 @@ const AdminPluginsContainer = React.memo((props: any) => {
         handleChange: handleChange,
         handleChangeIndex: handleChangeIndex
     };
-
+    console.log('stattttttttttttttttttttttttt ', props.plugins)
     return <AdminPluginsComponent {...adminPluginsComponentProps} />;
 });
 
@@ -43,8 +43,9 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state: IMainReduxState) => {
-console.log('stateeeeeeeeeeee ', state)
-    return {};
+    return {
+        plugins: state.Plugins
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminPluginsContainer);

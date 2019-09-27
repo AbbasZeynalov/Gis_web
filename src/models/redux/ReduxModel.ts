@@ -1,5 +1,6 @@
 import {IAdminMenuItems} from "../admin/AdminLayoutModel";
 import {IUser} from "../UserModel";
+import {IPluginsData} from "../admin/AdminPluginsModel";
 
 export interface IMainReduxState {
     Auth: IUser
@@ -9,6 +10,7 @@ export interface IMainReduxState {
     SnackBar: {
         SnackBarFunction: (enqueueSnackbar: any) => void
     },
+    Plugins: IPluginsData
 }
 
 export interface IMainReduxAction<T> {

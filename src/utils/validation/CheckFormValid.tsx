@@ -5,7 +5,10 @@ export const CheckFormValid = (event: any, inputs: string[], errMessage: any) =>
         let value = event.target.querySelector(`input[name=${input}]`).value;
 
         if (value === '')
-            errorsArr[input] = errMessage[input]
+            errorsArr[input] = {
+                value: '',
+                error: errMessage[input]
+            }
     });
 
     if (Object.keys(errorsArr).length) {
