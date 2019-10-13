@@ -83,33 +83,6 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     before(app, server) {
-
-      console.log('BEFORE app');
-
-      app.post('/install', function(req, res) {
-        console.log('request to some');
-
-        const { exec } = require('child_process');
-
-        var path = require('path');
-        let root = path.resolve(__dirname);
-
-        console.log('ROOT: ',root);
-
-        exec('cd '+root+'/../src/components && git clone https://gitlab+deploy-token-1:GdA2Ed-G5NwzyJPJqaJP@gitlab.risk.az/javidm/test-pack.git', (err, stdout, stderr) => {
-        // exec('cd '+root+'/../src/components/test-pack && git fetch https://gitlab+deploy-token-1:GdA2Ed-G5NwzyJPJqaJP@gitlab.risk.az/javidm/test-pack.git && git reset --hard origin/master', (err, stdout, stderr) => {
-          if (err) {
-            console.error(err);
-            return;
-          }
-
-          console.log('REBUILD');
-          exec('npm run build');
-        });
-
-        res.json({ custom: 'response' });
-      });
-
       if (fs.existsSync(paths.proxySetup)) {
         // This registers user provided middleware for proxy reasons
         require(paths.proxySetup)(app);

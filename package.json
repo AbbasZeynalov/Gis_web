@@ -91,7 +91,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "start-server:dev": "SET NODE_ENV=dev && node server/app.js",
+    "start-server:prod": "SET NODE_ENV=prod && node server/app.js"
   },
   "eslintConfig": {
     "extends": "react-app"
