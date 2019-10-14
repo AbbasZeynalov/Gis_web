@@ -71,6 +71,7 @@ Deploy App:
     - web-runner
   script:
     - npm run test
+    - npm run build
   environment:
     name: dev
     url: http://172.30.98.12:8080
