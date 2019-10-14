@@ -45,15 +45,15 @@ const TabUpdateComponent = (props: ITabUpdateComponentProps) => {
            <AppTableContainer dataCount={rows.length}>
                <MyContext.Consumer>
                    {(pageDetail) => {
-                       let page = pageDetail.page;
-                       let rowsPerPage = pageDetail.rowsPerPage;
+                       const page = pageDetail.page;
+                       const rowsPerPage = pageDetail.rowsPerPage;
 
                        return (
                            <TableBody>
                                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: any, index: number) => (
                                    <TableRow key={index}>
                                        <TableCell component="th" scope="row">
-                                           <PluginDetailsContainer actionButtons={['install', 'details']} />
+                                           {/*<PluginDetailsContainer actionButtons={['install', 'details']} />*/}
                                        </TableCell>
                                    </TableRow>
                                ))}

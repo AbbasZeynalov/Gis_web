@@ -24,8 +24,8 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
         setTimeout(() => store.dispatch(Logout()), 0)
     }
 
-    let token = sessionStorage.getItem('token');
-    let auth = !!token;
+    const token = sessionStorage.getItem('token');
+    const auth = !!token;
 
     if(rest.path === LOGIN) {
 

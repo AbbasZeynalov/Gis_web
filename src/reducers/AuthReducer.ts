@@ -16,7 +16,7 @@ export const initState: IAuthReduxState = {
 };
 
 const AuthReducer = (state: IAuthReduxState = initState, action: IMainReduxAction<IUser>) => {
-    let { payload } = action;
+    const { payload } = action;
 
     switch (action.type) {
         case LOGIN_ACTION:

@@ -18,7 +18,7 @@ HttpClient.interceptors.request.use(
     },
     (error: Error) => {
 
-        let variant = 'error';
+        const variant = 'error';
         store.dispatch(handleSpinner(false));
         store.getState().SnackBar.SnackBarFunction('Xəta baş verdi', {variant})
 
@@ -33,7 +33,7 @@ HttpClient.interceptors.response.use(
         return response;
     },
     (error: Error) => {
-        let variant = 'error';
+        const variant = 'error';
 
         store.dispatch(handleSpinner(false));
         store.getState().SnackBar.SnackBarFunction('Xəta baş verdi', {variant})

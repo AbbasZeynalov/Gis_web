@@ -9,7 +9,7 @@ export const Login = (loginForm: ILoginForm) => {
     return async (dispatch: Dispatch): Promise<any> => {
         return await LoginService(loginForm).then((res: IResponse) => {
             if (!res.errors) {
-                let user = res.data.data.login;
+                const user = res.data.data.login;
 
                 sessionStorage.setItem('token', JSON.stringify(user.access_token));
                 sessionStorage.setItem('delayToken', new Date(new Date().getTime() + 9*60*60*1000).toISOString()); // set auth delay

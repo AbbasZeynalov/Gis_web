@@ -4,7 +4,7 @@ import HttpClient from "../../config/api/HttpClient";
 import ApiConfig from "../../config/api/ApiConfig";
 
 export const getPlugins = (offset: number, limit: number): Promise<AxiosResponse<IResponse>> => {
-    let query = `query {
+    const query = `query {
                     modules(offset: ${offset}, limit: ${limit}){
                         items {
                             name, 

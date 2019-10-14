@@ -1,12 +1,14 @@
-import React from "react";
+import React, {BaseSyntheticEvent, useState} from "react";
 import PluginDetailsComponent from "./PluginDetailsComponent";
 import {IPluginDetailsContainerProps} from "../../../../models/admin/AdminPluginsModel";
+import HttpClient from "../../../../config/api/HttpClient";
 
 const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
-    const [openDetailsModal, setOpenDetailsModal] = React.useState(false);
-    const [openConfigureModal, setOpenConfigureModal] = React.useState(false);
-    const [openUninstallModal, setOpenUninstallModal] = React.useState(false);
-    const {actionButtons} = props;
+    const [openDetailsModal, setOpenDetailsModal] = useState(false);
+    const [openConfigureModal, setOpenConfigureModal] = useState(false);
+    const [openUninstallModal, setOpenUninstallModal] = useState(false);
+    const [version, setVersion] = useState('initial');
+    const {actionButtons, plugin} = props;
 
     const handleDetailsModal = (openDetailsModal: boolean) => {
         setOpenDetailsModal(openDetailsModal);
@@ -20,8 +22,14 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
         setOpenUninstallModal(openUninstallModal);
     };
 
+    const handleVersion = (e: BaseSyntheticEvent) => {
+        const value = e.target.value;
+        setVersion(value);
+    };
+
     const InstallPlugin = () => {
-        console.log('install this plugin')
+        HttpClient.post('http://localhost:8080/install-plugin')
+        console.log('install this plugin', plugin)
     };
 
     const ActivatePlugin = () => {
@@ -29,6 +37,8 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
     };
 
     const PluginDetailsProps = {
+        plugin: plugin,
+        version: version,
         actionButtons: actionButtons,
         openDetailsModal: openDetailsModal,
         openConfigureModal: openConfigureModal,
@@ -36,6 +46,7 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
         handleDetailsModal: handleDetailsModal,
         handleConfigureModal: handleConfigureModal,
         handleUninstallModal: handleUninstallModal,
+        handleVersion: handleVersion,
         InstallPlugin: InstallPlugin,
         ActivatePlugin: ActivatePlugin,
     };

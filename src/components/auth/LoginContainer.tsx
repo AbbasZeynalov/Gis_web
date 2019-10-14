@@ -30,8 +30,8 @@ const LoginContainer = (props: ILoginContainerProps) => {
 
     const onChange = (event: BaseSyntheticEvent) => {
         event.persist();
-        let input = event.target.name;
-        let value = event.target.value;
+        const input = event.target.name;
+        const value = event.target.value;
 
         setInputs(inputs => ({
             ...inputs,
@@ -47,7 +47,7 @@ const LoginContainer = (props: ILoginContainerProps) => {
         const isValid = CheckFormValid(e, formInputs, errMessage);
 
         if (isValid === true) {
-            let loginForm = {
+            const loginForm = {
                 username: inputs.username.value,
                 password: inputs.password.value
             };

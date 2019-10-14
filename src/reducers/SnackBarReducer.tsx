@@ -5,7 +5,7 @@ const initState: any = {
 };
 
 const SnackBar = (state: any = initState, action: any) => {
-    let { payload } = action;
+    const { payload } = action;
 
     switch (action.type) {
         case SnackBarFunction:

@@ -17,7 +17,7 @@ const AdminPluginsContainer = (props: any) => {
     const [value, setValue] = React.useState(0);
 
     useEffect(() => {  // get plugins details
-       props.GetAdminPlugins(1, 3);
+       props.GetAdminPlugins(0, 0);
     }, []);
 
     function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
@@ -28,12 +28,15 @@ const AdminPluginsContainer = (props: any) => {
         setValue(index);
     }
 
-    const adminPluginsComponentProps = {  // Admin plugins component's props
+    const adminPluginsComponentProps = {
         value: value,
+        plugins: props.plugins,
         a11yProps: a11yProps,
         handleChange: handleChange,
         handleChangeIndex: handleChangeIndex
     };
+
+    console.log('plugins', props.plugins)
 
     return <AdminPluginsComponent {...adminPluginsComponentProps} />;
 };

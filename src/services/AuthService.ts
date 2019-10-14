@@ -6,7 +6,7 @@ import store from "../store";
 import {IResponse} from "../models/HttpModel";
 
 export const LoginService = async (loginForm: ILoginForm): Promise<AxiosResponse<IResponse>> =>  {
-    let query = ` mutation {
+    const query = ` mutation {
               login ( username: "${loginForm.username}", password: "${loginForm.password}" ) {
                   id,
                   username,
@@ -27,8 +27,7 @@ export const LoginService = async (loginForm: ILoginForm): Promise<AxiosResponse
 
 export const checkShowSnackBar = (status: number, message: string) => {
     if (status === 200) {
-        let variant = 'success';
-        // alert('zzz');
+        const variant = 'success';
         store.getState().SnackBar.SnackBarFunction(message, {variant})
     }
 };

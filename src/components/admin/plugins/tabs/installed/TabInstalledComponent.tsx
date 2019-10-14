@@ -43,15 +43,15 @@ const TabInstalledComponent = () => {
             <AppTableContainer dataCount={rows.length}>
                 <MyContext.Consumer>
                     {(pageDetail) => {
-                        let page = pageDetail.page;
-                        let rowsPerPage = pageDetail.rowsPerPage;
+                        const page = pageDetail.page;
+                        const rowsPerPage = pageDetail.rowsPerPage;
 
                         return (
                             <TableBody>
                                 {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: any, index: number) => (
                                     <TableRow key={index}>
                                         <TableCell component="th" scope="row">
-                                            <PluginDetailsContainer actionButtons={['uninstall', 'details', 'configure', "activate"]} />
+                                            {/*<PluginDetailsContainer actionButtons={['uninstall', 'details', 'configure', "activate"]} />*/}
                                         </TableCell>
                                     </TableRow>
                                 ))}

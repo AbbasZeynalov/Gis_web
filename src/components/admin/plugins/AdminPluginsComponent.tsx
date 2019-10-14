@@ -17,7 +17,7 @@ import TabSearchContainer from "./tabs/search/TabSearchContainer";
 const AdminPluginsComponent = (props: IAdminPluginsComponentProps) => {
     const classes = useAdminTabsStyles();
     const theme = useTheme();
-    const {value, handleChange, handleChangeIndex, a11yProps} = props;
+    const {value, plugins, handleChange, handleChangeIndex, a11yProps} = props;
 
     return (
         <div className={classes.root}>
@@ -59,7 +59,7 @@ const AdminPluginsComponent = (props: IAdminPluginsComponentProps) => {
                     value === 2
                     ?
                         <TabPanelComponent value={value} index={2} dir={theme.direction}>
-                            <TabSearchContainer />
+                            <TabSearchContainer plugins={plugins} />
                         </TabPanelComponent>
                     :
                         <></>

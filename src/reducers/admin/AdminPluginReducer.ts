@@ -11,7 +11,6 @@ const AdminPluginReducer = (state = initState, action: IMainReduxAction<IPlugins
 
     switch (action.type) {
         case ADMIN_PLUGIN_ACTION:
-            console.log('payloaddd ', action.payload);
             return {
                 ...state,
                 ...action.payload

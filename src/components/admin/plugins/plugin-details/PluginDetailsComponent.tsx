@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import {Typography} from "@material-ui/core";
 
 // Custom imports
-import {IPluginDetailsComponentProps} from "../../../../models/admin/AdminPluginsModel";
+import {IPluginDetailsComponentProps, IPluginVersion} from "../../../../models/admin/AdminPluginsModel";
 import {usePluginDetailsAsset} from "../../../../assets/material/AdminAsset";
 import PluginDetailButtons from "./PluginDetailButtons";
 import PluginUninstallModal from "../modals/uninstall-modal/PluginUninstallModal";
@@ -16,6 +16,7 @@ import PluginDetailModal from "../modals/detail-modal/PluginDetailModal";
 
 const PluginDetailsComponent = (props: IPluginDetailsComponentProps) => {
     const classes = usePluginDetailsAsset();
+    const {plugin, version, handleVersion} = props;
 
     const detailButtonsProps = {
         actionButtons: props.actionButtons,
@@ -31,7 +32,7 @@ const PluginDetailsComponent = (props: IPluginDetailsComponentProps) => {
             <Grid container spacing={3} className={classes.root}>
                 <Grid item xs={6}>
                     <Typography className={classes.mainText}>
-                        Plugin Name: <span className={classes.mainTextSpan}>Test plugin name</span>
+                        Plugin Name: <span className={classes.mainTextSpan}>{plugin.name}</span>
                     </Typography>
                 </Grid>
                 <Grid item xs={6}>
@@ -41,22 +42,25 @@ const PluginDetailsComponent = (props: IPluginDetailsComponentProps) => {
                 </Grid>
                 <Grid item xs={6}>
                     <Select
-                        value={0}
+                        value={version}
                         className={classes.selectInput}
-                        // onChange={handleChange}
+                        onChange={handleVersion}
                     >
-                        <MenuItem key={0} value={0}>
+                        <MenuItem key={0} value='initial'>
                             Version available:
                         </MenuItem>
-                        <MenuItem key={1} value={1}>
-                            test2
-                        </MenuItem>
-                        <MenuItem key={2} value={2}>
-                            test3
-                        </MenuItem>
+                        {
+                            plugin.version.map((version: IPluginVersion) => (
+                                <MenuItem
+                                    key={version.version}
+                                    value={version.version}
+                                >
+                                    {version.version}
+                                </MenuItem>
+                            ))
+                        }
                     </Select>
                 </Grid>
-                {/* Plugin Detail Buttons */}
                 <Grid item xs={6}>
                     <PluginDetailButtons {...detailButtonsProps} />
                 </Grid>
@@ -67,7 +71,6 @@ const PluginDetailsComponent = (props: IPluginDetailsComponentProps) => {
                 </Grid>
             </Grid>
 
-            {/* Plugin Modals */}
             <PluginUninstallModal
                 openUninstallModal={props.openUninstallModal}
                 handleUninstallModal={props.handleUninstallModal}

@@ -35,7 +35,7 @@ describe('<LoginComponent />', () => {
 
     it('Login success', async () => {
 
-        let fakeData = {
+        const fakeData = {
             status: 200,
             data: {
                 data: {

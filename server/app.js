@@ -6,22 +6,27 @@ app.use(express.static(path.join(__dirname, '/../build')));
 
 app.post('/install-plugin', (req, res) => {
 
+    console.log('heeeeeeeeeee ')
     const { exec } = require('child_process');
 
     var path = require('path');
-    let root = path.resolve(__dirname);
+    var root = path.resolve(__dirname);
+
+    if (path === 'test') {
+        console.log('yes')
+    }
 
     console.log('ROOT: ',root);
 
-    exec('cd '+root+'/../src/components && git clone https://gitlab+deploy-token-1:GdA2Ed-G5NwzyJPJqaJP@gitlab.risk.az/javidm/test-pack.git', (err, stdout, stderr) => {
-        // exec('cd '+root+'/../src/components/test-pack && git fetch https://gitlab+deploy-token-1:GdA2Ed-G5NwzyJPJqaJP@gitlab.risk.az/javidm/test-pack.git && git reset --hard origin/master', (err, stdout, stderr) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-
-        console.log('REBUILD');
-    });
+    // exec('cd '+root+'/../src/components && git clone https://gitlab+deploy-token-1:GdA2Ed-G5NwzyJPJqaJP@gitlab.risk.az/javidm/test-pack.git', (err, stdout, stderr) => {
+    //     // exec('cd '+root+'/../src/components/test-pack && git fetch https://gitlab+deploy-token-1:GdA2Ed-G5NwzyJPJqaJP@gitlab.risk.az/javidm/test-pack.git && git reset --hard origin/master', (err, stdout, stderr) => {
+    //     if (err) {
+    //         console.error(err);
+    //         return;
+    //     }
+    //
+    //     console.log('REBUILD');
+    // });
 
     res.json({ custom: 'response' });
 
