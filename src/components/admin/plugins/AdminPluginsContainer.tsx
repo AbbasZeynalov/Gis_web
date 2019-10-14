@@ -34,7 +34,7 @@ const AdminPluginsContainer = (props: any) => {
         handleChange: handleChange,
         handleChangeIndex: handleChangeIndex
     };
-    console.log('stattttttttttttttttttttttttt ', props.plugins)
+
     return <AdminPluginsComponent {...adminPluginsComponentProps} />;
 };
 

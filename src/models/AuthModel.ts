@@ -10,12 +10,12 @@ export interface ILoginContainerProps extends RouteComponentProps<RouterMatch>{
 
 export interface ILoginComponentProps {
     username: {
-        value: string
-        error: string
+        value: string | null
+        error: string | null
     }
     password: {
-        value: string
-        error: string
+        value: string | null
+        error: string | null
     }
     onChange: (e: BaseSyntheticEvent) => void
     onSubmit: (e: MouseEvent<HTMLFormElement>) => void
