@@ -4,11 +4,6 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname, '/../build')));
 
-// viewed at http://localhost:8080
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../build/index.html'));
-});
-
 app.post('/install-plugin', (req, res) => {
 
     const { exec } = require('child_process');
@@ -37,7 +32,11 @@ app.post('/install-plugin', (req, res) => {
 
         exec('npm run build');
     }
-})
+});
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../build/index.html'));
+});
 
 app.listen(8080, () => {
 
