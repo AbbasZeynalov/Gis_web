@@ -9,8 +9,6 @@ import Adapter from "enzyme-adapter-react-16";
 
 const store = createStore(AdminMenu, initState, applyMiddleware(thunk));
 
-// console.log('storeeeeeeeeeeeeeeeeeeeeeeeeeeeeee ', store.getState())
-
 describe('AdminLayoutContainer', () => {
     Enzyme.configure({adapter: new Adapter()});
     let wrapperContainer: any;

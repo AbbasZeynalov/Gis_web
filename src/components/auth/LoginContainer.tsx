@@ -1,6 +1,5 @@
-import React, {BaseSyntheticEvent, MouseEvent, useEffect, useState} from "react";
-import {compose} from "redux";
-import { connect } from 'react-redux';
+import React, {BaseSyntheticEvent, MouseEvent, useState} from "react";
+import {connect} from 'react-redux';
 
 // Custom imports
 import LoginComponent from "./LoginComponent";
@@ -9,9 +8,8 @@ import {Login} from "../../actions/AuthAction";
 import {IMainReduxState} from "../../models/redux/ReduxModel";
 import {withRouter} from "react-router";
 import {CheckFormValid} from "../../utils/validation/CheckFormValid";
-import {on} from "cluster";
 
-const errMessage: {[index: string]: string} = {
+const errMessage: { [index: string]: string } = {
     username: 'İstifadəçi adını daxil edin',
     password: 'Şifrəni daxil edin',
 };
@@ -30,24 +28,21 @@ const LoginContainer = (props: ILoginContainerProps) => {
         }
     });
 
-    const onChange = (event: BaseSyntheticEvent) => {  // Handle inputs change
-            event.persist();
-            let input = event.target.name;
-            let value = event.target.value;
+    const onChange = (event: BaseSyntheticEvent) => {
+        event.persist();
+        let input = event.target.name;
+        let value = event.target.value;
 
-            setInputs(inputs => ({  // set input value
-                ...inputs,
-                [input]: {
-                    value: value || '',
-                    error: value ? '' : errMessage[input]
-                }
-            }));
-
-            console.log('heeeeeeeeeeeeeeeee ')
-
+        setInputs(inputs => ({
+            ...inputs,
+            [input]: {
+                value: value || '',
+                error: value ? '' : errMessage[input]
+            }
+        }));
     };
 
-    const onSubmit = async (e: MouseEvent<HTMLFormElement>) => {  // Handle form submit
+    const onSubmit = async (e: MouseEvent<HTMLFormElement>) => {
         e.preventDefault();
         const isValid = CheckFormValid(e, formInputs, errMessage);
 
@@ -60,11 +55,11 @@ const LoginContainer = (props: ILoginContainerProps) => {
             await props.Login(loginForm)  // Login action
                 .then(() => props.history.push('/'))
         } else {
-            setInputs(inputs => ({ ...inputs, ...isValid}))
+            setInputs(inputs => ({...inputs, ...isValid}))
         }
     };
 
-    const loginComponentProps: ILoginComponentProps = {  // assign props to Login component
+    const loginComponentProps: ILoginComponentProps = {
         ...inputs,
         onChange: onChange,
         onSubmit: onSubmit,
@@ -77,7 +72,7 @@ const mapDispatchToProps = {
     Login
 };
 
-const mapStateToProps = (state: IMainReduxState) => {  // add state to props
+const mapStateToProps = (state: IMainReduxState) => {
     return {
         auth: state.Auth
     }
