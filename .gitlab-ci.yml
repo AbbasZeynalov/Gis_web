@@ -57,7 +57,7 @@ Build and test app:
   artifacts:
     paths:
     - build/
-    keep: latest
+    - keep: latest
   before_script:
    - npm i
   script:
