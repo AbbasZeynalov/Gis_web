@@ -16,9 +16,10 @@ import PluginDetailModal from "../modals/detail-modal/PluginDetailModal";
 
 const PluginDetailsComponent = (props: IPluginDetailsComponentProps) => {
     const classes = usePluginDetailsAsset();
-    const {plugin, version, handleVersion} = props;
+    const {plugin, version, handleVersion, installButtonDetails} = props;
 
     const detailButtonsProps = {
+        installButtonDetails: installButtonDetails,
         actionButtons: props.actionButtons,
         ActivatePlugin: props.ActivatePlugin,
         InstallPlugin: props.InstallPlugin,

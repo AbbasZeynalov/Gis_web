@@ -2,12 +2,14 @@ import React, {BaseSyntheticEvent, useState} from "react";
 import PluginDetailsComponent from "./PluginDetailsComponent";
 import {IPluginDetailsContainerProps} from "../../../../models/admin/AdminPluginsModel";
 import HttpClient from "../../../../config/api/HttpClient";
+import Axios from "axios";
 
 const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
     const [openDetailsModal, setOpenDetailsModal] = useState(false);
     const [openConfigureModal, setOpenConfigureModal] = useState(false);
     const [openUninstallModal, setOpenUninstallModal] = useState(false);
     const [version, setVersion] = useState('initial');
+    const [installButtonDetails, setInstallButtonDetails] = useState({isLoading: false, text: 'install'});
     const {actionButtons, plugin} = props;
 
     const handleDetailsModal = (openDetailsModal: boolean) => {
@@ -28,7 +30,9 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
     };
 
     const InstallPlugin = () => {
-        HttpClient.post('http://localhost:8080/install-plugin')
+        setInstallButtonDetails((installButtonDetails) =>({isLoading: true, text: 'installing...'}))
+
+        Axios.post('http://localhost:9000/install-plugin')
         console.log('install this plugin', plugin)
     };
 
@@ -39,6 +43,7 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
     const PluginDetailsProps = {
         plugin: plugin,
         version: version,
+        installButtonDetails: installButtonDetails,
         actionButtons: actionButtons,
         openDetailsModal: openDetailsModal,
         openConfigureModal: openConfigureModal,

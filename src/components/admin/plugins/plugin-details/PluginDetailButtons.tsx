@@ -5,7 +5,15 @@ import {usePluginDetailButtonsStyle} from "../../../../assets/material/AdminAsse
 
 const PluginDetailButtons = (props: IPluginDetailButtonsProps) => {
     const classes = usePluginDetailButtonsStyle();
-    const {actionButtons, InstallPlugin, ActivatePlugin, handleDetailsModal, handleConfigureModal, handleUninstallModal} = props;
+    const {
+        installButtonDetails,
+        actionButtons,
+        InstallPlugin,
+        ActivatePlugin,
+        handleDetailsModal,
+        handleConfigureModal,
+        handleUninstallModal
+    } = props;
 
     return (
        <>
@@ -18,8 +26,9 @@ const PluginDetailButtons = (props: IPluginDetailButtonsProps) => {
                    color='primary'
                    className={classes.button}
                    onClick={InstallPlugin}
+                   disabled={installButtonDetails.isLoading}
                >
-                   Install
+                   {installButtonDetails.text}
                </Button>
            }
            {

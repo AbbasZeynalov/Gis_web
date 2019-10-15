@@ -8,9 +8,15 @@ export interface IAdminPluginsComponentProps {
     handleChangeIndex: (index: number) => void
 }
 
+export interface InstallButtonDetails {
+    isLoading: boolean
+    text: string
+}
+
 export interface IPluginDetailsComponentProps {
     plugin: IPluginItem
     version: string
+    installButtonDetails: InstallButtonDetails
     openDetailsModal: boolean
     openConfigureModal: boolean
     openUninstallModal: boolean
@@ -24,6 +30,7 @@ export interface IPluginDetailsComponentProps {
 }
 
 export interface IPluginDetailButtonsProps {
+    installButtonDetails: InstallButtonDetails
     actionButtons: Array<'install' | 'uninstall' | 'details' | 'configure' | 'activate'>
     InstallPlugin: () => void
     handleDetailsModal: (openDetailsModal: boolean) => void
