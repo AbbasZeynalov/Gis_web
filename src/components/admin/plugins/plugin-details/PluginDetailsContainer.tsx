@@ -41,7 +41,6 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
                     setInstallButtonDetails({isLoading: false, text: 'error occurred'})
                 }
             });
-        console.log('install this plugin', plugin)
     };
 
     const ActivatePlugin = () => {

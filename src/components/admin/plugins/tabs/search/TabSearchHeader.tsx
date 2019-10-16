@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import {ITabSearchHeaderComponentProps} from "../../../../../models/admin/AdminPluginsModel";
 
 const TabSearchHeader = (props: ITabSearchHeaderComponentProps) => {
-    const {SyncPlugins} = props;
+    const {syncButtonDetail, SyncPlugins} = props;
 
     return (
         <Grid container spacing={2}>
@@ -22,8 +22,9 @@ const TabSearchHeader = (props: ITabSearchHeaderComponentProps) => {
                     color='primary'
                     style={{float: 'right'}}
                     onClick={SyncPlugins}
+                    disabled={syncButtonDetail.isLoading}
                 >
-                    Sync now
+                    { syncButtonDetail.text }
                 </Button>
             </Grid>
         </Grid>

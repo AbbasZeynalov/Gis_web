@@ -13,11 +13,12 @@ import TabSearchHeader from "./TabSearchHeader";
 import {IPluginItem, ITabSearchComponentProps} from "../../../../../models/admin/AdminPluginsModel";
 
 const TabSearchComponent = (props: ITabSearchComponentProps) => {
-    const {SyncPlugins, plugins} = props;
+    const {SyncPlugins, plugins, syncButtonDetail} = props;
 
     return (
         <>
             <TabSearchHeader
+                syncButtonDetail={syncButtonDetail}
                 SyncPlugins={SyncPlugins}
             />
 

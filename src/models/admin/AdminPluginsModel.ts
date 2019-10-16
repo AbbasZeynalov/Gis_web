@@ -8,7 +8,7 @@ export interface IAdminPluginsComponentProps {
     handleChangeIndex: (index: number) => void
 }
 
-export interface InstallButtonDetails {
+export interface IButtonDetails {
     isLoading: boolean
     text: string
 }
@@ -16,7 +16,7 @@ export interface InstallButtonDetails {
 export interface IPluginDetailsComponentProps {
     plugin: IPluginItem
     version: string
-    installButtonDetails: InstallButtonDetails
+    installButtonDetails: IButtonDetails
     openDetailsModal: boolean
     openConfigureModal: boolean
     openUninstallModal: boolean
@@ -30,7 +30,7 @@ export interface IPluginDetailsComponentProps {
 }
 
 export interface IPluginDetailButtonsProps {
-    installButtonDetails: InstallButtonDetails
+    installButtonDetails: IButtonDetails
     actionButtons: Array<'install' | 'uninstall' | 'details' | 'configure' | 'activate'>
     InstallPlugin: () => void
     handleDetailsModal: (openDetailsModal: boolean) => void
@@ -79,14 +79,17 @@ export interface ITabUpdateHeaderComponentProps {
 // Tab Search
 export interface ITabSearchContainerProps {
     plugins: IPluginsData
+    GetAdminPlugins: (offset?: number, limit?: number) => any
 }
 
 export interface ITabSearchComponentProps {
     SyncPlugins: () => void
+    syncButtonDetail: IButtonDetails
     plugins: IPluginsData
 }
 
 export interface ITabSearchHeaderComponentProps {
+    syncButtonDetail: IButtonDetails
     SyncPlugins: () => void
 }
 
