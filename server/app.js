@@ -13,6 +13,7 @@ app.post('/install-plugin', (req, res) => {
 
     var path = require('path');
     var root = path.resolve(__dirname);
+    var filePath = 'cd '+root+'/../src/components';
 
     if (path === 'test') {
         console.log('yes')
@@ -20,18 +21,19 @@ app.post('/install-plugin', (req, res) => {
 
     console.log('ROOT: ',root);
 
-    exec('cd '+root+'/../src/components && git clone https://gitlab+deploy-token-1:QuVHJ8sBeMBPJiB1pSEA@gitlab.risk.az/javidm/test-pack.git', (err, stdout, stderr) => {
-        // exec('cd '+root+'/../src/components/test-pack && git fetch https://gitlab+deploy-token-1:GdA2Ed-G5NwzyJPJqaJP@gitlab.risk.az/javidm/test-pack.git && git reset --hard origin/master', (err, stdout, stderr) => {
+    exec(
+        filePath + ' && git clone https://gitlab+deploy-token-4:TmBSbpSm3eZzE3xtuyf4@gitlab.risk.az/abbasz/test',
+        (err, stdout, stderr) => {
         if (err) {
-            console.error(err);
-            return;
+            // console.error(err);
+            res.json({ success: false });
+            // return;
         }
+
+        res.json({ success: true });
 
         console.log('REBUILD');
     });
-
-
-    res.json({ custom: 'response' });
 
     if (process.env.NODE_ENV === 'dev') {
 

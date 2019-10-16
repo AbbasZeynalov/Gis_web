@@ -33,6 +33,14 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
         setInstallButtonDetails((installButtonDetails) =>({isLoading: true, text: 'installing...'}))
 
         Axios.post('http://localhost:9000/install-plugin')
+            .then(res => {
+                console.log('res ', res)
+                if (res.data.success) {
+                    setInstallButtonDetails({isLoading: false, text: 'installed'})
+                } else {
+                    setInstallButtonDetails({isLoading: false, text: 'error occurred'})
+                }
+            });
         console.log('install this plugin', plugin)
     };
 
