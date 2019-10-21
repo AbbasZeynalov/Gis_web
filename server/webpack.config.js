@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    entry: './src/server.ts',
+    entry: './app.js',
     module: {
         rules: [
             {
@@ -10,7 +10,7 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.mjs$/,
+                test: /\.js$/,
                 include: /node_modules/,
                 type: 'javascript/auto'
             }
@@ -27,7 +27,7 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'server-build'),
     },
     target: "node",
     // mode: 'development',
