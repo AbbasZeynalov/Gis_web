@@ -24,30 +24,30 @@
 #   paths:
 #   - node_modules/
 #   - dist
-  
+
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-  - node_modules/
+    - node_modules/
 
-  
+
 stages:
- - test-future
- - build-and-test
- - deploy
- 
+  - test-future
+  - build-and-test
+  - deploy
+
 Test future:
- stage: test-future
- except:
-  - master
- tags:
-  - web-runner
- cache: {}
- before_script:
-  - npm i
- script:
-  - npm run test
- 
+  stage: test-future
+  except:
+    - master
+  tags:
+    - web-runner
+  cache: {}
+  before_script:
+    - npm i
+  script:
+    - npm run test
+
 Build and test app:
   stage: build-and-test
   only:
@@ -56,13 +56,12 @@ Build and test app:
     - web-runner
   artifacts:
     paths:
-    - build/
+      - build/
   before_script:
-   - npm i
+    - npm i
   script:
     - npm run test
-    - npm run build
-    
+
 Deploy App:
   stage: deploy
   only:
@@ -72,6 +71,8 @@ Deploy App:
   script:
     - npm run test
     - npm run build
+    - xcopy build \gis-app\web\build /e /y
+    - npm run prod:restart
   environment:
     name: dev
     url: http://172.30.98.12:8080
