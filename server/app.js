@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-app.use(express.static(path.join(__dirname, '/../front/build')));
+// app.use(express.static(path.join(__dirname, '/../front/build')));
+app.use(express.static(path.resolve('../front/build')));
 
 app.post('/install-plugin', (req, res) => {
 
@@ -45,7 +46,8 @@ app.post('/install-plugin', (req, res) => {
 });
 
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../front/build/index.html'));
+    // res.sendFile(path.join(__dirname + '/../front/build/index.html'));
+    res.sendFile(path.resolve('../front/build/index.html'));
 });
 
 app.listen(9000, () => {
