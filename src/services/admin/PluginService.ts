@@ -10,6 +10,8 @@ export const getPlugins = (offset: number, limit: number): Promise<AxiosResponse
                             items {
                                 name, 
                                 url,
+                                git_deploy_token_username,
+                                git_deploy_token_password,
                                 version {
                                     version
                                 }

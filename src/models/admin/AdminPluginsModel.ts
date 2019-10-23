@@ -102,6 +102,8 @@ export interface IPluginsData {
 export interface IPluginItem {
     name: string
     url: string
+    git_deploy_token_username: string
+    git_deploy_token_password: string
     version: IPluginVersion[]
 }
 

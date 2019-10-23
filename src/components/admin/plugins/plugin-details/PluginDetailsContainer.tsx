@@ -1,7 +1,6 @@
 import React, {BaseSyntheticEvent, useState} from "react";
 import PluginDetailsComponent from "./PluginDetailsComponent";
 import {IPluginDetailsContainerProps} from "../../../../models/admin/AdminPluginsModel";
-import HttpClient from "../../../../config/api/HttpClient";
 import Axios from "axios";
 
 const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
@@ -30,9 +29,17 @@ const PluginDetailsContainer = (props: IPluginDetailsContainerProps) => {
     };
 
     const InstallPlugin = () => {
-        setInstallButtonDetails((installButtonDetails) =>({isLoading: true, text: 'installing...'}))
+        const data = {
+            pluginName: plugin.name,
+            gitDeployTokenUsername: plugin.git_deploy_token_username,
+            gitDeployTokenPassword: plugin.git_deploy_token_password
+        };
 
-        Axios.post('http://localhost:9000/install-plugin')
+        setInstallButtonDetails(() => ({isLoading: true, text: 'installing...'}));
+
+        console.log('data ', data)
+
+        Axios.post('http://localhost:9000/install-plugin', {...data})
             .then(res => {
                 console.log('res ', res)
                 if (res.data.success) {
