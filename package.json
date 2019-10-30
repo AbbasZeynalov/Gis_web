@@ -92,7 +92,8 @@
   "scripts": {
     "start": "set PORT=3001 && node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "prod:restart": "pm2 restart web-server"
   },
   "eslintConfig": {
     "extends": "react-app"
