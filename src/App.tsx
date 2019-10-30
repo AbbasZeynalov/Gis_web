@@ -6,7 +6,7 @@ import './App.css';
 import LayoutContainer from './components/layout/LayoutContainer';
 import {PrivateRoute} from "./Routes";
 import {ADMIN, LOGIN} from "./config/constants/routes";
-import LoginContainer from "./components/auth/LoginContainer";
+import LoginComponent from "./components/auth/LoginComponent";
 import SnackbarComponent from "./components/common/SnackbarComponent";
 import AdminLayoutContainer from "./components/admin/layout/AdminLayoutContainer";
 
@@ -27,7 +27,7 @@ class App extends Component<AppProps,{}> {
                 ?
                     <>
                         <SnackbarComponent />
-                        <PrivateRoute path={LOGIN} component={LoginContainer} />
+                        <PrivateRoute path={LOGIN} component={LoginComponent} />
                     </>
                 :
                     this.props.location.pathname.includes(ADMIN)

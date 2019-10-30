@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import LoginContainer from "../../components/auth/LoginContainer";
+import LoginComponent from "../../components/auth/LoginComponent";
 import main from "../../services/AuthService";
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom'
@@ -25,7 +25,7 @@ describe('<LoginComponent />', () => {
         wrapperContainer = render(
             <Provider store={store}>
                 <Router history={history}>
-                    <LoginContainer/>
+                    <LoginComponent/>
                 </Router>
             </Provider>
         );

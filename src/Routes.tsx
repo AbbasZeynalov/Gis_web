@@ -10,7 +10,7 @@ import {
 import {Logout} from "./actions/AuthAction";
 import store from "./store";
 import {ADMIN_PLUGINS, HOME, LOGIN} from "./config/constants/routes";
-import LoginContainer from "./components/auth/LoginContainer";
+import LoginComponent from "./components/auth/LoginComponent";
 import SnackbarComponent from "./components/common/SnackbarComponent";
 const AdminPluginsContainer = lazy(() => import("./components/admin/plugins/AdminPluginsContainer"))
 
@@ -37,7 +37,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
                 :
                     <>
                         <SnackbarComponent />
-                        <LoginContainer />
+                        <LoginComponent />
                     </>
             )}/>
         );

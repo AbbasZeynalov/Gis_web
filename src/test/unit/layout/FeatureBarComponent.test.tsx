@@ -20,7 +20,6 @@ describe('FeatureBarComponent', () => {
         });
 
         it('should render Rnd', () => {
-            console.log(wrapper.debug());
             expect(wrapper.find('Rnd')).toHaveLength(1)
         });
 

@@ -14,4 +14,4 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(ReduxThu
 
 store.subscribe(() => localStorage.setItem('redux-store', JSON.stringify(store.getState())))
 
-export default store
+export default store;

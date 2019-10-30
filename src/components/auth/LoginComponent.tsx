@@ -1,26 +1,79 @@
-import React, {BaseSyntheticEvent, MouseEvent} from 'react';
+import React, {BaseSyntheticEvent, MouseEvent, useState} from "react";
+import { useHistory } from "react-router";
 
 // Material imports
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Avatar from "@material-ui/core/Avatar";
+import LockOutlinedIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
 // Custom imports
+import {Login} from "../../actions/AuthAction";
+import {IMainReduxState} from "../../models/redux/ReduxModel";
+import {CheckFormValid} from "../../utils/validation/CheckFormValid";
 import {AuthAsset} from "../../assets/material/AuthAsset";
-import {ILoginComponentProps} from "../../models/AuthModel";
+import {useCustomDispatch, useCustomHistory, useCustomSelector} from "../../utils/helpers/ReactReduxHooks";
 
-const LoginComponent = (props: ILoginComponentProps) => {
-    const classes = AuthAsset();  // assign auth styles to classes
+const errMessage: { [index: string]: string } = {
+    username: 'İstifadəçi adını daxil edin',
+    password: 'Şifrəni daxil edin',
+};
 
-    const {username, password, onChange, onSubmit} = props;
+const formInputs = ['username', 'password'];
+
+const LoginComponent = () => {
+    const classes = AuthAsset();
+    const history = useCustomHistory();
+    const dispatch = useCustomDispatch();
+    const { auth } = useCustomSelector((state: IMainReduxState) => ({ auth: state.Auth }));
+
+    const [inputs, setInputs] = useState({
+        username: {
+            value: '',
+            error: ''
+        },
+        password: {
+            value: '',
+            error: ''
+        }
+    });
+
+    const onChange = (event: BaseSyntheticEvent) => {
+        event.persist();
+        const input = event.target.name;
+        const value = event.target.value;
+
+        setInputs(inputs => ({
+            ...inputs,
+            [input]: {
+                value: value || '',
+                error: value ? '' : errMessage[input]
+            }
+        }));
+    };
+
+    const onSubmit = async (e: MouseEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const isValid = CheckFormValid(e, formInputs, errMessage);
+
+        if (isValid === true) {
+            const loginForm = {
+                username: inputs.username.value,
+                password: inputs.password.value
+            };
+
+            await dispatch(Login(loginForm)).then(() => history.push('/'));
+        } else {
+            setInputs(inputs => ({...inputs, ...isValid}))
+        }
+    };
 
     return (
         <Container component="main" maxWidth="xs">
@@ -37,7 +90,7 @@ const LoginComponent = (props: ILoginComponentProps) => {
                 <form
                     noValidate
                     data-testid='loginForm'
-                    onSubmit={(e: MouseEvent<HTMLFormElement>) => onSubmit(e)}
+                    onSubmit={ onSubmit }
                     className={classes.form}
                 >
                     <TextField
@@ -48,13 +101,12 @@ const LoginComponent = (props: ILoginComponentProps) => {
                         name="username"
                         autoComplete="email"
                         autoFocus
-                        error={!!username.error}
-                        helperText={username.error}
+                        error={!!inputs.username.error}
+                        helperText={inputs.username.error}
                         inputProps={{ "data-testid": "username" }}
-                        value={username.value}
+                        value={inputs.username.value}
                         onChange={onChange}
                     />
-                    {/*<div data-testid='form-error'>{errors.username}</div>*/}
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -64,9 +116,9 @@ const LoginComponent = (props: ILoginComponentProps) => {
                         type="password"
                         id="password"
                         autoComplete="current-password"
-                        error={!!password.error}
-                        helperText={password.error}
-                        value={password.value}
+                        error={!!inputs.password.error}
+                        helperText={inputs.password.error}
+                        value={inputs.password.value}
                         inputProps={{ "data-testid": "password" }}
                         onChange={onChange}
                     />
@@ -82,7 +134,7 @@ const LoginComponent = (props: ILoginComponentProps) => {
                         className={classes.submit}
                         data-testid={'submit'}
                     >
-                        Sign Inn
+                        Sign In
                     </Button>
                     <Grid container>
                         <Grid item xs>
