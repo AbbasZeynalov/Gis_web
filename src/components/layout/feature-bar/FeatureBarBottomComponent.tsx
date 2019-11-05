@@ -1,27 +1,19 @@
 import React, {useState} from "react";
-import {Rnd} from 'react-rnd';
-//@ts-ignore
-import Fade from 'react-reveal/Fade';
-
-// import Material
-import ArrowLeft from '@material-ui/icons/ArrowLeft';
-import ArrowRight from '@material-ui/icons/ArrowRight';
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-
-// custom imports
+// @ts-ignore
+import Fade from "react-reveal/Fade";
+import SettingsApplications from "@material-ui/core/SvgIcon/SvgIcon";
+import {Rnd} from "react-rnd";
 import {useToolBarStyles} from "../../../assets/material/FeatureBar";
+import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import {IFeatureProps} from "../../../models/LayoutModel";
 
-const FeatureBarComponent = (props: IFeatureProps) => {
-    const styles = useToolBarStyles();
+const FeatureBarBottomComponent = (props: IFeatureProps) => {
     const [showBar, setShowBar] = useState(true);
+    const styles = useToolBarStyles();
     const { children, position, barSizes, onResize } = props;
-    const positionX = (position === 'right') ? (window.screen.width - barSizes[position].width - 10) : 0;
+    const positionX = barSizes.left.width + 10;
+    const positionY = window.screen.height - barSizes.bottom.height - 180;
     const isLeft = position === 'left';
-
-    // const onResize = (width: number) => {
-    //     setBarSize({width})
-    // };
 
     const hideBar = () => {
         setShowBar(false)
@@ -32,7 +24,7 @@ const FeatureBarComponent = (props: IFeatureProps) => {
             enableUserSelectHack={false}
             position={{
                 x: positionX,
-                y: 0
+                y: positionY
             }}
             size={{...barSizes[position]}}
             default={{
@@ -43,6 +35,7 @@ const FeatureBarComponent = (props: IFeatureProps) => {
             }}
             minWidth={200}
             onResize={(e, dir, refToElement) => {
+                console.log('on ressize ', refToElement.offsetWidth)
                 onResize(refToElement.offsetWidth, refToElement.offsetHeight, position)
             }}
             disableDragging={true}
@@ -50,9 +43,9 @@ const FeatureBarComponent = (props: IFeatureProps) => {
                 bottom: false,
                 bottomLeft: false,
                 bottomRight: false,
-                left: !isLeft,
-                right: isLeft,
-                top: false,
+                left: false,
+                right: false,
+                top: true,
                 topLeft: false,
                 topRight: false
             }}
@@ -60,27 +53,14 @@ const FeatureBarComponent = (props: IFeatureProps) => {
 
             <Fade
                 duration={500}
-                left={isLeft}
-                right={!isLeft}
                 when={showBar}
+                bottom={true}
             >
                 <div className={styles.root}>
-                    <SettingsApplications
-                        className={`${styles.icon} ${styles.settingIcon}`}
+                    <ArrowLeft
+                        className={`${styles.icon} ${styles.arrowIcon}`}
+                        onClick={hideBar}
                     />
-                    {
-                        isLeft
-                        ?
-                            <ArrowLeft
-                                className={`${styles.icon} ${styles.arrowIcon}`}
-                                onClick={hideBar}
-                            />
-                        :
-                            <ArrowRight
-                                className={`${styles.icon} ${styles.arrowIcon}`}
-                                onClick={hideBar}
-                            />
-                    }
                     { children }
                 </div>
             </Fade>
@@ -89,4 +69,4 @@ const FeatureBarComponent = (props: IFeatureProps) => {
     )
 };
 
-export default FeatureBarComponent;
+export default FeatureBarBottomComponent;

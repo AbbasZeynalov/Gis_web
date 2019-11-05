@@ -5,6 +5,12 @@ import {IFeatureProps} from "../../../models/LayoutModel";
 import Adapter from "enzyme-adapter-react-16";
 
 const props: IFeatureProps = {
+    barSizes: {
+        right: {width: 400, height: 300},
+        left: {width: 400, height: 300},
+        bottom: {width: screen.width - 830, height: 200}
+    },
+    onResize: jest.fn(),
     position: 'left',
     children: <h1>test</h1>
 };
@@ -35,6 +41,12 @@ describe('FeatureBarComponent', () => {
     describe('Left Bar', () => {
         let wrapperLeftBar: any;
         const propsLeftBar: IFeatureProps = {
+            barSizes: {
+                right: {width: 400, height: 300},
+                left: {width: 400, height: 300},
+                bottom: {width: screen.width - 830, height: 200}
+            },
+            onResize: jest.fn(),
             position: 'left',
             children: <h1>test</h1>
         };
@@ -66,6 +78,12 @@ describe('FeatureBarComponent', () => {
     describe('Right Bar', () => {
         let wrapperRightBar: any;
         const propsRightBar: IFeatureProps = {
+            barSizes: {
+                right: {width: 400, height: 300},
+                left: {width: 400, height: 300},
+                bottom: {width: screen.width - 830, height: 200}
+            },
+            onResize: jest.fn(),
             position: 'right',
             children: <h1>test</h1>
         };

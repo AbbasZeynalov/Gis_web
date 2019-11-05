@@ -36,10 +36,7 @@ const TabInstalledComponent = () => {
 
     return (
         <>
-            {/* Tab Header */}
             <TabInstalledHeader />
-
-            {/* Tab Table */}
             <AppTableContainer dataCount={rows.length}>
                 <MyContext.Consumer>
                     {(pageDetail) => {

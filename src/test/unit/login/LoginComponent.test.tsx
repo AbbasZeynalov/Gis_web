@@ -1,17 +1,11 @@
 import React from "react";
-import Enzyme, {mount, shallow} from "enzyme";
+import Enzyme, {shallow} from "enzyme";
 import LoginComponent from "../../../components/auth/LoginComponent";
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Adapter from "enzyme-adapter-react-16";
-import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import {MemoryRouter, useHistory} from "react-router";
 import * as ReactReduxHooks from "../../../utils/helpers/ReactReduxHooks";
 import thunk from "redux-thunk";
 import createMockStore from "redux-mock-store";
@@ -23,7 +17,7 @@ describe('Render LoginComponent', () => {
     let store: any;
 
     beforeEach(() => {
-        let user = {
+        const user = {
             username: 'abbasz',
             firstname: 'Abbas',
             lastname: 'Zeynalov',
