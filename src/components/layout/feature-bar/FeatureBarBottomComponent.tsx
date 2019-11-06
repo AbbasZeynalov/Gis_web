@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 // @ts-ignore
 import Fade from "react-reveal/Fade";
-import SettingsApplications from "@material-ui/core/SvgIcon/SvgIcon";
 import {Rnd} from "react-rnd";
 import {useToolBarStyles} from "../../../assets/material/FeatureBar";
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
@@ -10,8 +9,8 @@ import {IFeatureProps} from "../../../models/LayoutModel";
 const FeatureBarBottomComponent = (props: IFeatureProps) => {
     const [showBar, setShowBar] = useState(true);
     const styles = useToolBarStyles();
-    const { children, position, barSizes, onResize } = props;
-    const positionX = barSizes.left.width + 10;
+    const { children, position, barSizes, onResize, bottomBarFullWidth } = props;
+    const positionX = bottomBarFullWidth ? 0 : barSizes.left.width + 10;
     const positionY = window.screen.height - barSizes.bottom.height - 180;
     const isLeft = position === 'left';
 

@@ -12,6 +12,7 @@ export interface IBarSizes {
 }
 
 export interface IFeatureProps {
+    bottomBarFullWidth: boolean
     barSizes: IBarSizes
     children: React.ReactElement
     position: 'left' | 'right' | 'bottom'
