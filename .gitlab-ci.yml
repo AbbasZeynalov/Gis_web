@@ -51,19 +51,19 @@ Test future:
   script:
     - npm run test
 
-Build and test app:
-  stage: build-and-test
-  only:
-    - master
-  tags:
-    - web-runner
-  artifacts:
-    paths:
-      - build/
-  before_script:
-    - npm i
-  script:
-    - npm run test
+#Build and test app:
+#  stage: build-and-test
+#  only:
+#    - master
+#  tags:
+#    - web-runner
+#  artifacts:
+#    paths:
+#      - build/
+#  before_script:
+#    - npm i
+#  script:
+#    - npm run test
 
 Deploy App:
   stage: deploy
@@ -73,6 +73,7 @@ Deploy App:
     - web-runner
   script:
 #    - npm run test
+    - npm i
     - npm run build
     - xcopy build \gis-app\web\build /e /y
     - npm run prod:restart
