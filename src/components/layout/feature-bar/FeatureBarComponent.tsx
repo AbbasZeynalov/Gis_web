@@ -19,10 +19,6 @@ const FeatureBarComponent = (props: IFeatureProps) => {
     const positionX = (position === 'right') ? (window.screen.width - barSizes[position].width - 10) : 0;
     const isLeft = position === 'left';
 
-    // const onResize = (width: number) => {
-    //     setBarSize({width})
-    // };
-
     const hideBar = () => {
         setShowBar(false)
     };

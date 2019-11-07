@@ -16,9 +16,10 @@ export const useToolBarStyles = makeStyles(theme => ({
         right: 3,
     },
     icon: {
+        zIndex: 9,
         width: 30,
         height: 30,
-        backgroundColor: '#E5E5E5',
+        backgroundColor: '#c0c0c0',
         position: 'absolute',
         right: 3,
         cursor: 'pointer',

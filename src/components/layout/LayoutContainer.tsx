@@ -4,6 +4,7 @@ import Routes from "../../Routes";
 import FeatureBarComponent from "./feature-bar/FeatureBarComponent";
 import FeatureBarBottomComponent from "./feature-bar/FeatureBarBottomComponent";
 import {useCalculateBarSizes} from "../../hooks/UseCalculateBarSizes";
+import ToolPanelsComponent from "./feature-bar/tool-panel/ToolPanelsComponent";
 
 const LayoutContainer = () => {
     const bottomBarFullWidth = true;
@@ -25,8 +26,6 @@ const LayoutContainer = () => {
         setBarSizes({...data});
     };
 
-    console.log(barSizes)
-
     return (
         <ErrorBoundary>
             <FeatureBarComponent
@@ -35,7 +34,7 @@ const LayoutContainer = () => {
                 bottomBarFullWidth={bottomBarFullWidth}
                 onResize={onResize}
             >
-                <h1>left</h1>
+                <ToolPanelsComponent />
             </FeatureBarComponent>
             <FeatureBarBottomComponent
                 position='bottom'
@@ -51,7 +50,7 @@ const LayoutContainer = () => {
                 bottomBarFullWidth={bottomBarFullWidth}
                 onResize={onResize}
             >
-                <h1>right</h1>
+                <ToolPanelsComponent />
             </FeatureBarComponent>
             <Routes />
         </ErrorBoundary>
