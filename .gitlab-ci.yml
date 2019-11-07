@@ -28,10 +28,10 @@
 variables:
   GIT_CLONE_PATH: "C:\\GitLab-Runner/builds/web"
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
+#cache:
+#  key: ${CI_COMMIT_REF_SLUG}
+#  paths:
+#    - node_modules/
 
 
 stages:
@@ -51,19 +51,19 @@ Test future:
   script:
     - npm run test
 
-Build and test app:
-  stage: build-and-test
-  only:
-    - master
-  tags:
-    - web-runner
-  artifacts:
-    paths:
-      - build/
-  before_script:
-    - npm i
-  script:
-    - npm run test
+#Build and test app:
+#  stage: build-and-test
+#  only:
+#    - master
+#  tags:
+#    - web-runner
+#  artifacts:
+#    paths:
+#      - build/
+#  before_script:
+#    - npm i
+#  script:
+#    - npm run test
 
 Deploy App:
   stage: deploy
@@ -72,7 +72,8 @@ Deploy App:
   tags:
     - web-runner
   script:
-    - npm run test
+#    - npm run test
+    - npm i
     - npm run build
     - xcopy build \gis-app\web\build /e /y
     - npm run prod:restart
