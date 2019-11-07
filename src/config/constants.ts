@@ -1,5 +1,5 @@
 export const API_DOMAIN_LOCAL = 'localhost';
-export const API_DOMAIN_DEV = '172.30.98.12';
+export const API_DOMAIN_DEV = '172.30.20.212';
 export const API_PORT = '3200';
 export const API_ENDPOINT_LOCAL = `http://${API_DOMAIN_LOCAL}:${API_PORT}/graphql`;
 export const API_ENDPOINT_DEV = `http://${API_DOMAIN_DEV}:${API_PORT}`;
