@@ -72,7 +72,7 @@ Deploy App:
   tags:
     - web-runner
   script:
-    - npm run test
+#    - npm run test
     - npm run build
     - xcopy build \gis-app\web\build /e /y
     - npm run prod:restart
