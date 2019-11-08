@@ -33,3 +33,19 @@ export const useToolBarStyles = makeStyles(theme => ({
         right: 38
     }
 }));
+
+export const useToolPanelMenu = makeStyles(theme => ({
+    icon: {
+        zIndex: 9,
+        width: 30,
+        height: 30,
+        backgroundColor: '#c0c0c0',
+        position: 'absolute',
+        cursor: 'pointer',
+        borderBottomRightRadius: theme.spacing(1),
+        borderBottomLeftRadius: theme.spacing(1),
+        right: 38
+    }
+}));
+
+

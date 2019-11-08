@@ -11,11 +11,12 @@ import SettingsApplications from '@material-ui/icons/SettingsApplications';
 // custom imports
 import {useToolBarStyles} from "../../../assets/material/FeatureBar";
 import {IFeatureProps} from "../../../models/LayoutModel";
+import ToolPanelMenu from "./tool-panel/ToolPanelMenu";
 
 const FeatureBarComponent = (props: IFeatureProps) => {
     const styles = useToolBarStyles();
     const [showBar, setShowBar] = useState(true);
-    const { children, position, barSizes, onResize } = props;
+    const { children, position, barSizes, onResize, toolPanels, handleToolPanels } = props;
     const positionX = (position === 'right') ? (window.screen.width - barSizes[position].width - 10) : 0;
     const isLeft = position === 'left';
 
@@ -61,9 +62,11 @@ const FeatureBarComponent = (props: IFeatureProps) => {
                 when={showBar}
             >
                 <div className={styles.root}>
-                    <SettingsApplications
-                        className={`${styles.icon} ${styles.settingIcon}`}
+                    <ToolPanelMenu
+                        toolPanels={toolPanels}
+                        handleToolPanels={handleToolPanels}
                     />
+
                     {
                         isLeft
                         ?

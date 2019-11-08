@@ -11,7 +11,21 @@ export interface IBarSizes {
     bottom: IBarSize
 }
 
+export interface IToolPanelMenu {
+    toolPanels: string[]
+    handleToolPanels: (e: any) => void
+}
+
 export interface IFeatureProps {
+    toolPanels: string[]
+    barSizes: IBarSizes
+    children: React.ReactElement
+    position: 'left' | 'right' | 'bottom'
+    onResize: (width: number, height: number, bar: 'right' | 'left' | 'bottom') => void
+    handleToolPanels: (e: any) => void
+}
+
+export interface IFeatureBottomBarProps {
     bottomBarFullWidth: boolean
     barSizes: IBarSizes
     children: React.ReactElement
