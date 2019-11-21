@@ -6,6 +6,8 @@ export const useCalculateBarSizes = (width: number,
                                      barSizes: IBarSizes,
                                      bottomBarFullWidth: boolean) => {
     let data;
+    const screenHeight = window.innerHeight;
+    const screenWidth = window.innerWidth;
 
     if (bottomBarFullWidth) {
         if (bar === 'right') {
@@ -21,8 +23,7 @@ export const useCalculateBarSizes = (width: number,
                 bottom: {...barSizes.bottom}
             }
         } else if (bar === 'bottom') {
-            const screenHeight = window.screen.height;
-            const sideBarHeight = screenHeight - barSizes.bottom.height - 190
+            const sideBarHeight = screenHeight - barSizes.bottom.height - 30;
 
             data = {
                 right: {width: barSizes.right.width, height: sideBarHeight},
@@ -32,7 +33,7 @@ export const useCalculateBarSizes = (width: number,
         }
     } else {
         if (bar === 'right') {
-            const bottomWidth = window.screen.width - width - barSizes.left.width - 30;
+            const bottomWidth = screenWidth - width - barSizes.left.width - 30;
 
             data = {
                 right: {width, height},
@@ -40,7 +41,7 @@ export const useCalculateBarSizes = (width: number,
                 bottom: {width: bottomWidth, height: barSizes.bottom.height}
             }
         } else if (bar === 'left') {
-            const bottomWidth = window.screen.width - barSizes.right.width - width - 30;
+            const bottomWidth = screenWidth - barSizes.right.width - width - 30;
 
             data = {
                 right: {...barSizes.right},

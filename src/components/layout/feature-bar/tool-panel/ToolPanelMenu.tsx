@@ -38,18 +38,17 @@ const ToolPanelMenu = (props: IToolPanelMenu) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                {/*{console.log(allToolPanels)}*/}
                 {
                     allToolPanels.map((item) => (
                         <MenuItem
                             selected={toolPanels.includes(item.value)}
-                            onClick={handleToolPanels}
-                            value={item.value}
+                            onClick={() => handleToolPanels(item.value)}
+                            // value={item.value}
                             key={item.value}
                         >
                             <Checkbox
                                 checked={toolPanels.includes(item.value)}
-                                value={item.value}
+                                // value={item.value}
                                 inputProps={{
                                     'aria-label': 'primary checkbox',
                                 }}

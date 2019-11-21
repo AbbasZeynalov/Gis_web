@@ -14,11 +14,21 @@ import {IFeatureProps} from "../../../models/LayoutModel";
 import ToolPanelMenu from "./tool-panel/ToolPanelMenu";
 
 const FeatureBarComponent = (props: IFeatureProps) => {
+    const {
+        children,
+        position,
+        barSizes,
+        onResize,
+        toolPanels,
+        handleToolPanels,
+        bottomBarFullWidth
+    } = props;
     const styles = useToolBarStyles();
     const [showBar, setShowBar] = useState(true);
-    const { children, position, barSizes, onResize, toolPanels, handleToolPanels } = props;
-    const positionX = (position === 'right') ? (window.screen.width - barSizes[position].width - 10) : 0;
     const isLeft = position === 'left';
+    const positionX = (position === 'right') ? (window.innerWidth - barSizes[position].width - 15) : 0;
+
+    console.log('position ', positionX)
 
     const hideBar = () => {
         setShowBar(false)

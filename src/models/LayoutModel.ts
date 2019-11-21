@@ -21,6 +21,7 @@ export interface IFeatureProps {
     barSizes: IBarSizes
     children: React.ReactElement
     position: 'left' | 'right' | 'bottom'
+    bottomBarFullWidth: boolean
     onResize: (width: number, height: number, bar: 'right' | 'left' | 'bottom') => void
     handleToolPanels: (e: any) => void
 }

@@ -11,7 +11,7 @@ const FeatureBarBottomComponent = (props: IFeatureBottomBarProps) => {
     const styles = useToolBarStyles();
     const { children, position, barSizes, onResize, bottomBarFullWidth } = props;
     const positionX = bottomBarFullWidth ? 0 : barSizes.left.width + 10;
-    const positionY = window.screen.height - barSizes.bottom.height - 180;
+    const positionY = window.innerHeight - barSizes.bottom.height - 20;
 
     const hideBar = () => {
         setShowBar(false)

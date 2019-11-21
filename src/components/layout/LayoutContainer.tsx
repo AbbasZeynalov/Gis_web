@@ -5,15 +5,14 @@ import FeatureBarComponent from "./feature-bar/FeatureBarComponent";
 import FeatureBarBottomComponent from "./feature-bar/FeatureBarBottomComponent";
 import {useCalculateBarSizes} from "../../hooks/UseCalculateBarSizes";
 import ToolPanelsComponent from "./feature-bar/tool-panel/ToolPanelsComponent";
-import {toolPanelLayer, toolPanelMap} from "../../config/constants/layout";
 import {removeValueArray} from "../../utils/helpers/ArrayHelper";
 
 const LayoutContainer = () => {
-    const bottomBarFullWidth = true;
-    const width = window.screen.width - 10;
-    const height = window.screen.height;
+    const bottomBarFullWidth = false;
+    const width = window.innerWidth - 15;
+    const height = window.innerHeight;
     const bottomBarHeight = 200;
-    const barHeight = bottomBarFullWidth ? (height - bottomBarHeight - 190) : (height - 180);
+    const barHeight = bottomBarFullWidth ? (height - bottomBarHeight - 30) : (height - 20);
     const bottomBarWidth = bottomBarFullWidth ? width : (width - 820);
 
     const [barSizes, setBarSizes] = useState({
@@ -23,12 +22,10 @@ const LayoutContainer = () => {
     });
     const [toolPanels, setToolPanels] = useState([] as string[]);
 
-    const handleToolPanels = (e: any) => {
-        const value = e.target.value;
+    const handleToolPanels = (value: string) => {
         const arr = [...toolPanels];
 
         if (!toolPanels.includes(value)) {
-            console.log('target ', e.target)
             arr.push(value);
             setToolPanels(arr)
         } else {
@@ -51,6 +48,7 @@ const LayoutContainer = () => {
                 barSizes={barSizes}
                 handleToolPanels={handleToolPanels}
                 onResize={onResize}
+                bottomBarFullWidth={bottomBarFullWidth}
             >
                 <ToolPanelsComponent />
             </FeatureBarComponent>
@@ -68,6 +66,7 @@ const LayoutContainer = () => {
                 position='right'
                 barSizes={barSizes}
                 onResize={onResize}
+                bottomBarFullWidth={bottomBarFullWidth}
             >
                 <ToolPanelsComponent />
             </FeatureBarComponent>
