@@ -4,51 +4,28 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Checkbox from '@material-ui/core/Checkbox';
+import {toolPanelLayer, toolPanelMap} from "../../../../config/constants/layout";
 
-const ToolPanelsComponent = () => {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+interface IToolPanelsComponentProps {
+    toolPanels: string[]
+}
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleMenuItemClick = (e: any) => {
-        console.log(e.target)
-    }
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+const ToolPanelsComponent = (props: IToolPanelsComponentProps) => {
+    const { toolPanels } = props;
 
     return (
         <>
-            <ToolPanel title='test1'>
-                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                    Open Menu
-                </Button>
-                <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                >
-                    <MenuItem selected onClick={handleMenuItemClick}>
-                        <Checkbox
-                            checked
-                            value="checkedA"
-                            inputProps={{
-                                'aria-label': 'primary checkbox',
-                            }}
-                        />
-                        Profile
-                    </MenuItem>
-                    <MenuItem onClick={handleMenuItemClick}>My account</MenuItem>
-                    <MenuItem onClick={handleMenuItemClick}>Logout</MenuItem>
-                </Menu>
-            </ToolPanel>
-            <ToolPanel title='test2'>
-                <h1>tool panel</h1>
-            </ToolPanel>
+            {toolPanels.includes(toolPanelLayer) && (
+                <ToolPanel title='Laylar'>
+                    laylar
+                </ToolPanel>
+            )}
+
+            {toolPanels.includes(toolPanelMap) && (
+                <ToolPanel title='Xeriteler'>
+                    xeriteler
+                </ToolPanel>
+            )}
         </>
     )
 };

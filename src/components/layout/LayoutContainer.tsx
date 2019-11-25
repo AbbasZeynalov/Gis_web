@@ -50,7 +50,9 @@ const LayoutContainer = () => {
                 onResize={onResize}
                 bottomBarFullWidth={bottomBarFullWidth}
             >
-                <ToolPanelsComponent />
+                <ToolPanelsComponent
+                    toolPanels={toolPanels}
+                />
             </FeatureBarComponent>
             <FeatureBarBottomComponent
                 position='bottom'
@@ -68,7 +70,9 @@ const LayoutContainer = () => {
                 onResize={onResize}
                 bottomBarFullWidth={bottomBarFullWidth}
             >
-                <ToolPanelsComponent />
+                <ToolPanelsComponent
+                    toolPanels={toolPanels}
+                />
             </FeatureBarComponent>
             <Routes />
         </ErrorBoundary>
