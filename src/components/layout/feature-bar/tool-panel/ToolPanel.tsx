@@ -7,8 +7,9 @@ import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {IToolPanelProps} from "../../../../models/LayoutModel";
 
-const ExpansionPanel = withStyles({
+export const ExpansionPanel = withStyles({
     root: {
         border: '1px solid rgba(0, 0, 0, .125)',
         boxShadow: 'none',
@@ -25,7 +26,7 @@ const ExpansionPanel = withStyles({
     expanded: {},
 })(MuiExpansionPanel);
 
-const ExpansionPanelSummary = withStyles({
+export const ExpansionPanelSummary = withStyles({
     root: {
         backgroundColor: 'rgba(0, 0, 0, .03)',
         borderBottom: '1px solid rgba(0, 0, 0, .125)',
@@ -43,14 +44,13 @@ const ExpansionPanelSummary = withStyles({
     expanded: {},
 })(MuiExpansionPanelSummary);
 
-const ExpansionPanelDetails = withStyles(theme => ({
+export const ExpansionPanelDetails = withStyles(theme => ({
     root: {
         padding: theme.spacing(2),
     },
 }))(MuiExpansionPanelDetails);
 
-
-const ToolPanel = (props: any) => {
+const ToolPanel = (props: IToolPanelProps) => {
     const [expand, setExpand] = useState(true);
     const { title, children } = props;
 

@@ -43,3 +43,8 @@ export interface IFeatureBottomProps {
     position: 'left' | 'right'
     onResize: (width: number, height: number, bar: 'right' | 'left' | 'bottom') => void
 }
+
+export interface IToolPanelProps {
+    title: string,
+    children: React.ReactNode
+}

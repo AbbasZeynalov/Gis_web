@@ -64,16 +64,16 @@ describe('Render LoginComponent', () => {
         });
     });
 
-    describe('submit form with empty inputs', () => {
-        beforeEach(() => {
-           wrapper.find('form').simulate('submit', { preventDefault: jest.fn() })
-        });
-
-        it('should show username validation error', () => {
-            console.log(wrapper.debug())
-            // expect(wrapper.find(TextField).at(0).props().error).toBe(true)
-        });
-    });
+    // describe('submit form with empty inputs', () => {
+    //     beforeEach(() => {
+    //        wrapper.find('form').simulate('submit', { preventDefault: jest.fn() })
+    //     });
+    //
+    //     it('should show username validation error', () => {
+    //         console.log(wrapper.debug())
+    //         // expect(wrapper.find(TextField).at(0).props().error).toBe(true)
+    //     });
+    // });
 
     describe('validation username input', () => {
         beforeEach(() => {

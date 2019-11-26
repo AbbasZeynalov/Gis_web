@@ -15,7 +15,7 @@ const allToolPanels = [
 const ToolPanelMenu = (props: IToolPanelMenu) => {
     const styles = useToolPanelMenu();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const { toolPanels, handleToolPanels } = props;
+    const {toolPanels, handleToolPanels} = props;
 
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
@@ -38,25 +38,21 @@ const ToolPanelMenu = (props: IToolPanelMenu) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                {
-                    allToolPanels.map((item) => (
-                        <MenuItem
-                            selected={toolPanels.includes(item.value)}
-                            onClick={() => handleToolPanels(item.value)}
-                            // value={item.value}
-                            key={item.value}
-                        >
-                            <Checkbox
-                                checked={toolPanels.includes(item.value)}
-                                // value={item.value}
-                                inputProps={{
-                                    'aria-label': 'primary checkbox',
-                                }}
-                            />
-                            { item.name }
-                        </MenuItem>
-                    ))
-                }
+                {allToolPanels.map((item) => (
+                    <MenuItem
+                        selected={toolPanels.includes(item.value)}
+                        onClick={() => handleToolPanels(item.value)}
+                        key={item.value}
+                    >
+                        <Checkbox
+                            checked={toolPanels.includes(item.value)}
+                            inputProps={{
+                                'aria-label': 'primary checkbox',
+                            }}
+                        />
+                        {item.name}
+                    </MenuItem>
+                ))}
             </Menu>
         </>
     )

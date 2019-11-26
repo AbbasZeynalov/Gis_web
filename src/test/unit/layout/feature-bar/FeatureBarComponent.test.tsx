@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
-import FeatureBarComponent from "../../../components/layout/feature-bar/FeatureBarComponent";
-import {IFeatureProps} from "../../../models/LayoutModel";
+import FeatureBarComponent from "../../../../components/layout/feature-bar/FeatureBarComponent";
+import {IFeatureProps} from "../../../../models/LayoutModel";
 import Adapter from "enzyme-adapter-react-16";
 
 const props: IFeatureProps = {
@@ -11,8 +11,11 @@ const props: IFeatureProps = {
         bottom: {width: screen.width - 830, height: 200}
     },
     onResize: jest.fn(),
+    handleToolPanels: jest.fn(),
     position: 'left',
-    children: <h1>test</h1>
+    toolPanels: ['test'],
+    children: <h1>test</h1>,
+    bottomBarFullWidth: false
 };
 
 describe('FeatureBarComponent', () => {
@@ -46,9 +49,12 @@ describe('FeatureBarComponent', () => {
                 left: {width: 400, height: 300},
                 bottom: {width: screen.width - 830, height: 200}
             },
+            toolPanels: ['test'],
             onResize: jest.fn(),
+            handleToolPanels: jest.fn(),
             position: 'left',
-            children: <h1>test</h1>
+            children: <h1>test</h1>,
+            bottomBarFullWidth: false
         };
 
         beforeEach(() => {
@@ -83,9 +89,12 @@ describe('FeatureBarComponent', () => {
                 left: {width: 400, height: 300},
                 bottom: {width: screen.width - 830, height: 200}
             },
+            toolPanels: ['test'],
             onResize: jest.fn(),
+            handleToolPanels: jest.fn(),
             position: 'right',
-            children: <h1>test</h1>
+            children: <h1>test</h1>,
+            bottomBarFullWidth: false
         };
 
         beforeEach(() => {
