@@ -32,8 +32,8 @@ const FeatureBarBottomComponent = (props: IFeatureBottomBarProps) => {
                 height: barSizes[position].height,
             }}
             minWidth={200}
+            minHeight={200}
             onResize={(e, dir, refToElement) => {
-                console.log('on ressize ', refToElement.offsetWidth)
                 onResize(refToElement.offsetWidth, refToElement.offsetHeight, position)
             }}
             disableDragging={true}

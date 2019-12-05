@@ -8,7 +8,6 @@ const initState = {
 };
 
 const AdminPluginReducer = (state = initState, action: IMainReduxAction<IPluginsData>) => {
-
     switch (action.type) {
         case ADMIN_PLUGIN_ACTION:
             return {
