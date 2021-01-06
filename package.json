@@ -22,7 +22,7 @@
     "@types/sinon": "^7.5.0",
     "@types/styled-components": "^4.1.19",
     "@types/yup": "^0.26.24",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "axios-mock-adapter": "^1.17.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
